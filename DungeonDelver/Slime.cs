@@ -13,7 +13,8 @@ namespace DungeonDelver
             name = "Slime";
             _health = 10;
             _damage = 2;
-            defaultPortrait = $"{name} + v1";
+            defaultPortrait = new Bitmap(Properties.Resources.Slimev1);
+            
         }
 
         // EGEGEGEGEGEG -- Finish the slime class so that way you can test it appearing on the screen.

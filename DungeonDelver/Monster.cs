@@ -10,6 +10,6 @@ namespace DungeonDelver
     {
         // We can use the name variable and make sure that the resource is named the exact same as the name, and then the hurt image can be the name + "Hurt"
         public bool isTaunted = false;
-        public string defaultPortrait;
+        public Bitmap defaultPortrait;
     }
 }
