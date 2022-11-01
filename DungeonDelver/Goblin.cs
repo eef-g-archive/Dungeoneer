@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace DungeonDelver
 {
-    internal class Slime : Monster
+    internal class Goblin : Monster
     {
+
         public override Monster FactoryMethod()
         {
-            return new Slime();
+            return new Goblin();
         }
 
-        public Slime()
+
+        public Goblin()
         {
-            name = "Slime";
-            _health = 10;
-            _damage = 2;
-            defaultPortrait = new Bitmap(Properties.Resources.Slimev1);
+            name = "Goblin";
+            _health = 15;
+            _damage = 5;
+            defaultPortrait = new Bitmap(Properties.Resources.Goblinv1);
+
         }
 
         // EGEGEGEGEGEG -- Finish the slime class so that way you can test it appearing on the screen.

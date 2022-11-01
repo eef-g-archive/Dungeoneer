@@ -17,12 +17,21 @@ namespace DungeonDelver
 
         public void GenerateDungeon(int len)
         {
+            MonsterFactory monster_fact = new MonsterFactory();
             for(int i = 1; i <= len; i++)
             {
-                Slime s = new Slime();
-                Room room = new Room(i, s, 15);
+                Monster monster = monster_fact.GenerateMonster();
+                Room room = new Room(i, monster, 15);
                 rooms.AddLast(room);
             }
+        }
+
+
+        public void EnterRoom(int room_num)
+        {
+            Room current = rooms.ElementAt(room_num);
+            string s = $"> You enter room number {room_num} and encounter an enemy {current.enemy.name}!";
+            
         }
     }
 }
