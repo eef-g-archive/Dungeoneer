@@ -37,17 +37,18 @@ namespace DungeonDelver
         protected bool playerTurn = true;
         protected Player player;
         protected Monster currentEnemy;
-        private int dungeonLength = 11;
-        private Form1 mainForm;
+        private int dungeonLength = 3;
 
         // When the engine is created, make sure you initialize the actual dungeon itself as well as the player.
-        public DungeonEngine(Form1 f)
+        public DungeonEngine()
         {
             rooms = new LinkedList<Room>();
             GenerateDungeon(dungeonLength);
             player = new Player();
-            mainForm = f;
         }
+
+        public event Action<string> TextOut;
+        public event Action<Bitmap> ImageOut;
 
 
         // @Author: Ethan Gray
@@ -92,8 +93,10 @@ namespace DungeonDelver
             else
             {
                 monsterImage = Properties.Resources.CreatureBackground;
-                outputText = $"> You finished the dungeon, go home!";
+                outputText = $"> You finished the dungeon, go home!\n";
+                TextOut(outputText);
             }
+            ImageOut(monsterImage);
         }
         
 
@@ -105,61 +108,60 @@ namespace DungeonDelver
          */
         private void EnterRoom()
         {
-            playerTurn = true;
             Room current = rooms.ElementAt(current_room);
             currentEnemy = current.enemy;
-            if (currentEnemy.name != "Empty") { outputText = $"> You enter room number {current_room + 1} and encounter an enemy {current.enemy.name}!"; }
-            else { outputText = $"> You come accross an empty chamber. Choose what you do here wisely, there isn't much time."; }
+            if (currentEnemy.name != "Empty") { outputText = $"> You enter room number {current_room + 1} and encounter an enemy {current.enemy.name}!\n"; }
+            else { outputText = $"> You come accross an empty chamber. Choose what you do here wisely, there isn't much time.\n"; }
+            TextOut(outputText);
         }
 
 
         // @Author: Ethan Gray
-        // Last Edited - 11/04/22
+        // Last Edited - 11/15/22
         // @Purpose:
         /*
          * 
-         * 
          */
-        public void AttackLogic()
+        public void GameTurn(string playerAction)
         {
-            if (playerTurn)
+            if (current_room < dungeonLength)
             {
-                outputText = player.Attack(player, currentEnemy);
-                playerTurn = !playerTurn;
+                PlayerTurn(playerAction);
+                wait(500);
+                if (currentEnemy.Health <= 0)
+                {
+                    current_room++;
+                    ImageOut(Properties.Resources.CreatureBackground);
+                    TextOut($"> You defeated the {currentEnemy.name}! You proceed through the door to the next room.\n");
+                    wait(1000);
+                    NextRoom();
+                }
+                else
+                {
+                    MonsterTurn();
+                }
             }
-            else
-            {
-                MonsterTurn();
-            }
-            if(RoomClearCheck())
-            {
-                current_room++;
-                NextRoom();
-            }
+            else { TextOut("> You already finished the dungeon. Go home!\n");  }
         }
 
-        public void GameTurn(string playerChoice)
+        private void PlayerTurn(string action)
         {
-            switch(playerChoice)
+            switch(action)
             {
                 case "FIGHT":
                     outputText = player.Attack(player, currentEnemy);
-                    if(RoomClearCheck())
-                    {
-                        current_room++;
-                        NextRoom();
-                    }
-                    else
-                    {
-                        wait(500);
-                        MonsterTurn();
-                    }
+                    TextOut(outputText + "\n");
                     break;
                 case "BLOCK":
+                    player.Block();
+                    TextOut("> You raise your shield to block.\n");
                     break;
                 case "HEAL":
+                    player.Heal();
+                    TextOut("> You heal yourself!\n");
                     break;
                 case "RUN":
+                    // Need to put logic in here to quit the game.
                     break;
             }
         }
@@ -167,27 +169,8 @@ namespace DungeonDelver
         private void MonsterTurn()
         {
             outputText = currentEnemy.Attack(currentEnemy, player);
-            playerTurn = !playerTurn;
-
+            TextOut(outputText + "\n");
         }
-
-        // @Author: Ethan Gray
-        // Last Edited - 11/04/22
-        // @Purpose:
-        /*
-         * 
-         * 
-         */
-        private bool RoomClearCheck()
-        {
-            if(currentEnemy.Health <= 0)
-            {
-                outputText = $"> You defeated the enemy {currentEnemy.name}! You are awarded with 5 XP.\n> You carry on to the next room.";
-                return true;
-            }
-            else { return false;  }
-        }
-
 
 
 

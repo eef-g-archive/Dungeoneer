@@ -19,7 +19,8 @@ namespace DungeonDelver
 {
     public partial class Form1 : Form
     {
-        DungeonEngine engine;
+        public string outputText;
+
         public Form1()
         {
             // First section of code is setting Form elements to look and behave a specific way.
@@ -28,14 +29,10 @@ namespace DungeonDelver
             statusText.TextChanged += statusText_TextChanged;
             backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
             imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
-
-            // Here is where we create our main "DungeonEngine" object. This manages the entire project's backend.
-            engine.NextRoom();
-
-            // Update the form w/ data from the engine.
-            statusText.Text = engine.outputText;
-            imageDisplay.Image = engine.monsterImage;
         }
+
+        // Created this custom event that is handled by the Model-Object (DungeonProgram.cs)
+        public event Action<string> PlayerInput;
 
 
         /*******************\
@@ -49,47 +46,27 @@ namespace DungeonDelver
          * Works w/ the engine object to make sure we use that object for all the interactions & get info from it as well
          * Updates the visuals accordingly as well.
          */
+
+        // NOTE (11/15/22): This function has been reworked since the 7th and is now handled within the DungeonProgram.cs file.
         private void button1_Click(object sender, EventArgs e) // This is the "FIGHT" button code. Renaming it to fightButton breaks it. Don't know why, it just does.
         {
-            ToggleInput();
-            engine.GameTurn("FIGHT");
-            UpdateText(engine.outputText);
-            imageDisplay.Image = engine.monsterImage;
-            ToggleInput();
-            /*
-            // Initial Player turn logic
-            ToggleInput();
-            engine.AttackLogic();
-            UpdateText(engine.outputText);
-            imageDisplay.Image = engine.monsterImage;
-
-            // Monster Turn Logic
-            engine.wait(500);
-            engine.AttackLogic();
-            UpdateText(engine.outputText);
-            imageDisplay.Image = engine.monsterImage;
-            ToggleInput();
-            */
+            PlayerInput("FIGHT");
         }
 
         private void blockButton_Click(object sender, EventArgs e)
         {
-
+            PlayerInput("BLOCK");
         }
 
         private void healButton_Click(object sender, EventArgs e)
-        {
-
+        { 
+            PlayerInput("HEAL");
         }
 
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            engine.current_room = 999;
-            engine.NextRoom();
-            statusText.Text += "\n> You decide to flee the dungeon and escape with only your life.";
-            // EGEGEGEGEGEGEGEGEG
-            // Later on, need to throw the user into the main menu screen and not just tell them they fled.
+            PlayerInput("RUN");
         }
 
 
@@ -104,7 +81,7 @@ namespace DungeonDelver
             statusText.Text += "\n" + status;
         }
         
-        private void ToggleInput()
+        public void ToggleInput()
         {
             fightButton.Enabled = !fightButton.Enabled;
             healButton.Enabled = !healButton.Enabled;
@@ -132,6 +109,11 @@ namespace DungeonDelver
             statusText.ScrollToCaret();
         }
 
+        /*******************************\
+         *        Item Accessors       *
+        \*******************************/
+        public string StatusText { get { return null; }  set { statusText.Text += value; } }
+        public Bitmap MonsterImage { get { return null; } set { imageDisplay.Image = value; } }
 
     }
 }
