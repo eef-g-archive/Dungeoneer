@@ -19,52 +19,62 @@ namespace DungeonDelver
 {
     public partial class Form1 : Form
     {
-        bool firstLine;
-        int curr_room;
         DungeonEngine engine;
-        int dungeon_length;
         public Form1()
         {
             // First section of code is setting Form elements to look and behave a specific way.
             InitializeComponent();
             statusText.Text = "";
-            firstLine = true;
             statusText.TextChanged += statusText_TextChanged;
-
+            backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
 
             // Here is where we create our main "DungeonEngine" object. This manages the entire project's backend.
-            engine = new DungeonEngine();
-            dungeon_length  = 11;
-            engine.GenerateDungeon(dungeon_length);
-            curr_room = 1;
+            engine.NextRoom();
+
+            // Update the form w/ data from the engine.
+            statusText.Text = engine.outputText;
+            imageDisplay.Image = engine.monsterImage;
         }
 
-        /*Author: Ethan Gray
-         * Last Edited: 10/28/22
-         * 
+
+        /*******************\
+        |*   Form Inputs   *|
+        \*******************/ 
+        
+        /* @Author: Ethan Gray
+         * Last Edited: 11/07/22
+         * Purpose:
+         * Logic when the FIGHT button is pressed.
+         * Works w/ the engine object to make sure we use that object for all the interactions & get info from it as well
+         * Updates the visuals accordingly as well.
          */
         private void button1_Click(object sender, EventArgs e) // This is the "FIGHT" button code. Renaming it to fightButton breaks it. Don't know why, it just does.
         {
-            if (curr_room < dungeon_length) // If still in dungeon, then go ahead and display the monster as well as update the current room the player is in
-            {
-                string encounter_text = $"> You enter Room number {curr_room} and find an enemy {engine.rooms.ElementAt(curr_room).enemy.name}! Prepare to fight.";
-                if (firstLine) { statusText.Text += encounter_text; firstLine = false; }
-                else { statusText.Text += $"\n{encounter_text}"; }
-                imageDisplay.Image = engine.rooms.ElementAt(curr_room).enemy.defaultPortrait;
-                curr_room++;
-            }
-            else // Clear the screen of the monsters entirely and then let the player know the game is over.
-            {
-                statusText.Text += $"\n> You've completed the dungeon! Go home.";
-                imageDisplay.Image = Properties.Resources.CreatureBackground;
-            }
+            ToggleInput();
+            engine.GameTurn("FIGHT");
+            UpdateText(engine.outputText);
+            imageDisplay.Image = engine.monsterImage;
+            ToggleInput();
+            /*
+            // Initial Player turn logic
+            ToggleInput();
+            engine.AttackLogic();
+            UpdateText(engine.outputText);
+            imageDisplay.Image = engine.monsterImage;
+
+            // Monster Turn Logic
+            engine.wait(500);
+            engine.AttackLogic();
+            UpdateText(engine.outputText);
+            imageDisplay.Image = engine.monsterImage;
+            ToggleInput();
+            */
         }
 
         private void blockButton_Click(object sender, EventArgs e)
         {
-            string statusUpdate = "> You feel rested.";
-            if (firstLine) { statusText.Text += statusUpdate; firstLine = false; }
-            else { statusText.Text += $"\n{statusUpdate}";  }
+
         }
 
         private void healButton_Click(object sender, EventArgs e)
@@ -72,12 +82,48 @@ namespace DungeonDelver
 
         }
 
-        private void tauntButton_Click(object sender, EventArgs e)
-        {
 
+        private void runButton_Click(object sender, EventArgs e)
+        {
+            engine.current_room = 999;
+            engine.NextRoom();
+            statusText.Text += "\n> You decide to flee the dungeon and escape with only your life.";
+            // EGEGEGEGEGEGEGEGEG
+            // Later on, need to throw the user into the main menu screen and not just tell them they fled.
         }
 
 
+
+
+        /*******************************\
+         *   General Purpose Methods   *
+        \*******************************/
+
+        private void UpdateText(string status)
+        {
+            statusText.Text += "\n" + status;
+        }
+        
+        private void ToggleInput()
+        {
+            fightButton.Enabled = !fightButton.Enabled;
+            healButton.Enabled = !healButton.Enabled;
+            blockButton.Enabled = !blockButton.Enabled;
+            runButton.Enabled = !runButton.Enabled;
+        }
+
+
+
+        /*******************************\
+         *      Behavior Changes       *
+        \*******************************/
+
+        // @Author: Ethan Gray
+        // Last Edited - 11/01/22
+        // @Purpose:
+        /* Behavioral code that allows the textbox to automatically scroll
+         * DO. NOT. TOUCH. If you tweak it, then it can cause the main method of communicating to the player to break.
+         */
         private void statusText_TextChanged(object sender, EventArgs e)
         {
             // set the current caret position to the end
@@ -85,5 +131,7 @@ namespace DungeonDelver
             // scroll it automatically
             statusText.ScrollToCaret();
         }
+
+
     }
 }

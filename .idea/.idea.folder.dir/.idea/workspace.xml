@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c2932233-80ad-40ec-979e-36fbd598de73" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DungeonDelver/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/FileContentIndex/1d8194fb-945c-46bc-bbbe-073c0f3c483a.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/FileContentIndex/46c2e956-6ebd-4e0f-8925-3a03bee58dbf.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/FileContentIndex/9643bb49-0827-4930-b2fe-1d3a8f5c6345.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DungeonDelver/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/DungeonDelver/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/DungeonDelver/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/dungeondelver.metadata.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/dungeondelver.metadata.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/ProjectEvaluation/dungeondelver.projects.v5.1" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/ProjectEvaluation/dungeondelver.projects.v5.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.exe" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/bin/Debug/net6.0-windows/DungeonDelver.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.designer.runtimeconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.designer.runtimeconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/DungeonDelver.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/Debug/net6.0-windows/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/DungeonDelver.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/DungeonDelver.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/DungeonDelver.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/DungeonDelver.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DungeonDelver/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DungeonDelver/obj/project.nuget.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2H301eoFHDObcpa8O16wRLp7gUW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1667498247916</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667498247916</updated>
+      <workItem from="1667498251533" duration="25000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

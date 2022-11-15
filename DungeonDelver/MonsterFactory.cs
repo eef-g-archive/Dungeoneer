@@ -13,6 +13,9 @@ namespace DungeonDelver
         {
             Monster m;
             int monster_val = rand.Next(0, 1001);
+
+            // TEMPORARY switch case to be used until I can figure out how to make
+            // an enumerable class that has all of the different monsters
             switch(monster_val)
             {
                 case <= 500:
