@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DungeonDelver
 {
-    internal class DungeonProgram
+    internal class DungeonController
     {
         public Form1 app;
         DungeonEngine engine;
 
-        public DungeonProgram(Form1 app)
+        public DungeonController(Form1 app)
         {
             this.app = app;
             engine = new DungeonEngine();

@@ -11,7 +11,7 @@ namespace DungeonDelver
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            DungeonProgram program = new DungeonProgram(new Form1());
+            DungeonController program = new DungeonController(new Form1());
             Application.Run(program.app);
         }
     }

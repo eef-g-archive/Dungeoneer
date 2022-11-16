@@ -4,6 +4,7 @@
 /* This is the base class for the player and all monsters in the game.
  * It controls the variables and methods that are shared between the two objects and is used as a starting point.
  * This is to be used as the groundwork for the classes later down the line to build off of.
+ * 
  */
 
 using System;
@@ -23,23 +24,33 @@ namespace DungeonDelver
         public string name;
         protected int _damage;
         protected bool _isBlocking = false;
+        
 
         // @Author: Ethan Gray
-        // Last Edited: 10/26/22
+        // Last Edited: 11/15/22
         // Purpose: This function will let 2 Being objects interact with each other by manipulating their health values according to block stances.
         public string Attack(Being a, Being b)
         {
-            if(b._isBlocking)
-            {
-                b._health -= (a._damage / 4);
-                return $"> {b.name} is hurt for {a._damage / 4}.";
-            }
-            else 
-            {
-                b._health -= a._damage;
-                return $"> {b.name} is hurt for {a._damage}.";
-            }
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            int dmg = rand.Next(0, a._damage + 1);
 
+            if (b._isBlocking)
+            {
+                int block_chance = rand.Next(0, 4);
+                if (block_chance == 2)
+                {
+                    b._health -= dmg;
+                    if (dmg == 0) { return $"> {a.name} misses their attack."; }
+                    else { return $"> {b.name} is hurt for {dmg}."; }
+                }
+                else { return $"> {b.name} blocks {a.name}'s attack!"; }
+            }
+            else
+            {
+                b._health -= dmg;
+                if (dmg == 0) { return $"> {a.name} misses their attack."; }
+                else { return $"> {b.name} is hurt for {dmg}."; }
+            }
         }
         
         // @Author: Ethan Gray

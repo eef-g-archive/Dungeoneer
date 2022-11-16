@@ -126,6 +126,7 @@ namespace DungeonDelver
         {
             if (current_room < dungeonLength)
             {
+                wait(500);
                 PlayerTurn(playerAction);
                 wait(500);
                 if (currentEnemy.Health <= 0)
