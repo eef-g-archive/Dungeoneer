@@ -18,9 +18,12 @@ namespace DungeonDelver
             name = "The player";
         }
 
-        public void Heal()
+        public string Heal()
         {
-            _health += healPower;
+            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            int healVal = healPower + rand.Next(0, 6);
+            _health += healVal;
+            return $"You heal yourself for {healVal} hit points!";
         }
     }
 }

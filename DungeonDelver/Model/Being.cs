@@ -21,10 +21,12 @@ namespace DungeonDelver
         // NOTE: Only the name is public, this is so that we can access the name from other classes such as the main controller at the end to update high scores!
         protected int _health;
         public int Health { get { return _health; } set { _health = value; } } // Gives us a public way to access the health of the being if needed
+        public bool Blocking {  get { return _isBlocking;  } }
         public string name;
         protected int _damage;
         protected bool _isBlocking = false;
-        
+        protected int _turnsLeftBlocking = 0;
+
 
         // @Author: Ethan Gray
         // Last Edited: 11/15/22
@@ -36,7 +38,7 @@ namespace DungeonDelver
 
             if (b._isBlocking)
             {
-                int block_chance = rand.Next(0, 4);
+                int block_chance = rand.Next(0, 7);
                 if (block_chance == 2)
                 {
                     b._health -= dmg;
@@ -54,12 +56,32 @@ namespace DungeonDelver
         }
         
         // @Author: Ethan Gray
-        // Last Edited: 10/26/22
+        // Last Edited: 11/17/22
         // Purpose: Inverses the existing value of Block.
         // NOTE: Can be used by the GameEngine class at the end of a turn to reset back to a normal stance.
         public void Block()
         {
-            _isBlocking = !_isBlocking;
+            if (_turnsLeftBlocking == 0) { _isBlocking = !_isBlocking; }
+            if(_isBlocking == true) { _turnsLeftBlocking = 3; }
+        }
+
+        public string BlockCountdown()
+        {
+            if(_turnsLeftBlocking > 0)
+            {
+                _turnsLeftBlocking--;
+                switch(_turnsLeftBlocking)
+                {
+                    case 2:
+                        return $"> Your arm starts to feel a little weak from holding up your shield.\n";
+                        break;
+                    case 1:
+                        return $"> Your arm is about to give out from holding up your shield.\n";
+                        break;
+                }
+            }
+            else { Block(); return $"> You lower your shield from exhaustion."; }
+            return "";
         }
     }
 }

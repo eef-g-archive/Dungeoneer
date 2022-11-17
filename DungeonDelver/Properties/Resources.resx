@@ -124,12 +124,6 @@
   <data name="CreatureBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CreatureBackground.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="kill" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\kill.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rock.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Dungeon_Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dungeon_Wall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,9 +138,6 @@
   </data>
   <data name="Goblinv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Goblinv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GooblinSMOLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GooblinSMOLL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gooblinv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gooblinv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -139,9 +139,15 @@ namespace DungeonDelver
                 }
                 else
                 {
-                    MonsterTurn();
+                    if(playerAction != "RUN")
+                        MonsterTurn();
                 }
-            }
+
+                if(player.Blocking) 
+                { 
+                    TextOut(player.BlockCountdown());
+                }
+            }   
             else { TextOut("> You already finished the dungeon. Go home!\n");  }
         }
 
@@ -159,9 +165,13 @@ namespace DungeonDelver
                     break;
                 case "HEAL":
                     player.Heal();
-                    TextOut("> You heal yourself!\n");
+                    outputText = player.Heal();
+                    TextOut(outputText + "\n");
                     break;
                 case "RUN":
+                    current_room = 999;
+                    TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n");
+                    ImageOut(Properties.Resources.CreatureBackground);
                     // Need to put logic in here to quit the game.
                     break;
             }

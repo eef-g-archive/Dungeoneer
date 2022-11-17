@@ -21,7 +21,5 @@ namespace DungeonDelver
             _damage = 1;
             defaultPortrait = new Bitmap(Properties.Resources.Gooblinv1);
         }
-
-        // EGEGEGEGEGEG -- Finish the slime class so that way you can test it appearing on the screen.
     }
 }

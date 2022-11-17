@@ -45,8 +45,10 @@ namespace DungeonDelver
                     engine.GameTurn("BLOCK");
                     break;
                 case "HEAL":
+                    engine.GameTurn("HEAL");
                     break;
                 case "RUN":
+                    engine.GameTurn("RUN");
                     break;
             }
             app.ToggleInput();
