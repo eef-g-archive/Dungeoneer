@@ -20,6 +20,7 @@ namespace DungeonDelver
     public partial class Form1 : Form
     {
         public string outputText;
+        public string userName;
 
         public Form1()
         {
@@ -29,15 +30,22 @@ namespace DungeonDelver
             statusText.TextChanged += statusText_TextChanged;
             backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
             imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
+            difficultySelect.SelectedIndex = 0;
         }
 
         // Created this custom event that is handled by the Model-Object (DungeonProgram.cs)
         public event Action<string> PlayerInput;
+        public event Action<string> NewGame;
+        public event Action<string> LoadGame;
 
 
         /*******************\
         |*   Form Inputs   *|
         \*******************/ 
+        
+
+
+        // *** GAME PANEL INPUT HANDLING ***
         
         /* @Author: Ethan Gray
          * Last Edited: 11/07/22
@@ -63,11 +71,27 @@ namespace DungeonDelver
             PlayerInput("HEAL");
         }
 
-
         private void runButton_Click(object sender, EventArgs e)
         {
             PlayerInput("RUN");
         }
+
+        // *** MENU PANEL INPUT HANDLING *** \\
+
+        private void newGameButton_Click(object sender, EventArgs e)
+        {
+            if (userNameInput.Text != "")
+            {
+                userName = userNameInput.Text;
+                NewGame(userName);
+            }
+        }
+
+        private void loadGameButton_Click(object sender, EventArgs e)
+        {
+            LoadGame(savedGamesList.Text);
+        }
+
 
 
 
@@ -76,17 +100,28 @@ namespace DungeonDelver
          *   General Purpose Methods   *
         \*******************************/
 
-        private void UpdateText(string status)
-        {
-            statusText.Text += "\n" + status;
-        }
-        
         public void ToggleInput()
         {
             fightButton.Enabled = !fightButton.Enabled;
             healButton.Enabled = !healButton.Enabled;
             blockButton.Enabled = !blockButton.Enabled;
             runButton.Enabled = !runButton.Enabled;
+        }
+
+        public void ShowGame()
+        {
+            gamePanel.Enabled = true;
+            gamePanel.BringToFront();
+            menuPanel.Enabled = false;
+
+        }
+
+        public void ShowMenu()
+        {
+            menuPanel.Enabled = true;
+            menuPanel.BringToFront();
+            statusText.Text = "";
+            gamePanel.Enabled = false;
         }
 
 
@@ -115,5 +150,64 @@ namespace DungeonDelver
         public string StatusText { get { return null; }  set { statusText.Text += value; } }
         public Bitmap MonsterImage { get { return null; } set { imageDisplay.Image = value; } }
 
+        public int GameDifficulty
+        {
+            get
+            {
+                switch (difficultySelect.Text)
+                {
+                    case "Easy":
+                        return 3;
+                        break;
+                    case "Medium":
+                        return 5;
+                        break;
+                    case "Hard":
+                        return 8;
+                        break;
+                    case "Extra Hard":
+                        return 12;
+                        break;
+                    default:
+                        return 3;
+                }
+            }
+        }
+
+        public string ProfileList
+        {
+            get { return savedGamesList.Text;  }
+            set { savedGamesList.Items.Add(value); }
+        }
+
+        public List<string> ExistingProfiles
+        {
+            get 
+            {
+                List<string> items = new List<string>();
+                foreach(string i in savedGamesList.Items)
+                {
+                    items.Add(i);
+                }
+                return items;
+            }
+
+        }
+
+        public int MonsterMax
+        {
+            get { return 0; }
+            set { monsterHealthBar.Maximum = value; monsterHealthBar.Value = value; }
+        }
+
+        public int MonsterHealth
+        {
+            get { return 0; }
+            set 
+            {
+                if (value < 0) { monsterHealthBar.Value = 0; }
+                else { monsterHealthBar.Value = value; }  
+            }
+        }
     }
 }

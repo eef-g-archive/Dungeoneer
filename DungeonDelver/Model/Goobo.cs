@@ -20,6 +20,7 @@ namespace DungeonDelver
             _health = 30;
             _damage = 1;
             defaultPortrait = new Bitmap(Properties.Resources.Gooblinv1);
+            xp_value = 25;
         }
     }
 }

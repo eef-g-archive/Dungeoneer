@@ -11,5 +11,7 @@ namespace DungeonDelver
         public Bitmap defaultPortrait;
         public abstract Monster FactoryMethod();
 
+        public int xp_value;
+
     }
 }

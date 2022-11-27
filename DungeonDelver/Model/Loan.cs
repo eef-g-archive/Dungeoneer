@@ -17,8 +17,9 @@ namespace DungeonDelver
         {
             name = "Bag of Studen Loan Money";
             _health = 12000;
-            _damage = 5;
+            _damage = 900;
             defaultPortrait = new Bitmap(Properties.Resources.Loanv1);
+            xp_value = 9999999;
         }
 
         // EGEGEGEGEGEG -- Finish the slime class so that way you can test it appearing on the screen.

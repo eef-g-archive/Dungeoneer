@@ -21,7 +21,7 @@ namespace DungeonDelver
             _health = 15;
             _damage = 5;
             defaultPortrait = new Bitmap(Properties.Resources.Goblinv1);
-
+            xp_value = 10;
         }
 
         // EGEGEGEGEGEG -- Finish the slime class so that way you can test it appearing on the screen.

@@ -35,20 +35,22 @@ namespace DungeonDelver
 
         // Set up all the protected & private variables that are only accessible by this class
         protected bool playerTurn = true;
-        protected Player player;
+        public Player player;
         protected Monster currentEnemy;
-        private int dungeonLength = 3;
+        public int dungeonLength;
 
         // When the engine is created, make sure you initialize the actual dungeon itself as well as the player.
         public DungeonEngine()
         {
             rooms = new LinkedList<Room>();
-            GenerateDungeon(dungeonLength);
             player = new Player();
         }
 
         public event Action<string> TextOut;
         public event Action<Bitmap> ImageOut;
+        public event Action<int> MonsterUpdate;
+        public event Action<int> NewMonster;
+        public event Action<string> GameEnd;
 
 
         // @Author: Ethan Gray
@@ -60,6 +62,8 @@ namespace DungeonDelver
          */
         public void GenerateDungeon(int len)
         {
+            rooms.Clear();
+            dungeonLength = len;
             MonsterFactory monster_fact = new MonsterFactory();
             for(int i = 1; i <= len * 2; i++)
             {
@@ -68,6 +72,7 @@ namespace DungeonDelver
                 Room room = new Room(i, monster, 15);
                 rooms.AddLast(room);
             }
+            current_room = 0;
         }
 
 
@@ -92,9 +97,13 @@ namespace DungeonDelver
             }
             else
             {
+                player.dungeons_attempted++;
                 monsterImage = Properties.Resources.CreatureBackground;
                 outputText = $"> You finished the dungeon, go home!\n";
                 TextOut(outputText);
+                wait(2000);
+                if(current_room != 99999) { player.dungeons_completed++; }
+                GameEnd("end");
             }
             ImageOut(monsterImage);
         }
@@ -110,11 +119,30 @@ namespace DungeonDelver
         {
             Room current = rooms.ElementAt(current_room);
             currentEnemy = current.enemy;
+            NewMonster(currentEnemy.Health);
             if (currentEnemy.name != "Empty") { outputText = $"> You enter room number {current_room + 1} and encounter an enemy {current.enemy.name}!\n"; }
             else { outputText = $"> You come accross an empty chamber. Choose what you do here wisely, there isn't much time.\n"; }
             TextOut(outputText);
         }
 
+
+        private void RoomResults()
+        {
+            TextOut("\n==========================================\n");
+            TextOut($"| You defeated the enemy {currentEnemy.name}\n");
+            TextOut($"| This gained you {currentEnemy.xp_value}\n");
+            TextOut($"| You proceed to the next room.\n");
+            TextOut("==========================================\n");
+        }
+
+        private void LevelUpResults()
+        {
+            TextOut("\n==========================================\n");
+            TextOut($"| You leveled up!");
+            TextOut($"| Your max health is now {player.max_health}.\n");
+            TextOut($"| Your max damage is now {player.Damage}.\n");
+            TextOut("==========================================\n");
+        }
 
         // @Author: Ethan Gray
         // Last Edited - 11/15/22
@@ -128,13 +156,22 @@ namespace DungeonDelver
             {
                 wait(500);
                 PlayerTurn(playerAction);
+                MonsterUpdate(currentEnemy.Health);
                 wait(500);
                 if (currentEnemy.Health <= 0)
                 {
                     current_room++;
                     ImageOut(Properties.Resources.CreatureBackground);
-                    TextOut($"> You defeated the {currentEnemy.name}! You proceed through the door to the next room.\n");
-                    wait(1000);
+                    player.xp_gained += currentEnemy.xp_value;
+                    RoomResults();
+                    wait(2000);
+                    int x = player.xp_gained / 15;
+                    if(player.xp_gained / 15 > player._level) 
+                    { 
+                        player.LevelUp();
+                        LevelUpResults();
+                        wait(2000);
+                    }
                     NextRoom();
                 }
                 else
@@ -169,9 +206,11 @@ namespace DungeonDelver
                     TextOut(outputText + "\n");
                     break;
                 case "RUN":
-                    current_room = 999;
+                    current_room = 99999;
                     TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n");
                     ImageOut(Properties.Resources.CreatureBackground);
+                    wait(2000);
+                    GameEnd("end");
                     // Need to put logic in here to quit the game.
                     break;
             }
