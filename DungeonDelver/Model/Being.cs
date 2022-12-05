@@ -70,17 +70,9 @@ namespace DungeonDelver
             if(_turnsLeftBlocking > 0)
             {
                 _turnsLeftBlocking--;
-                switch(_turnsLeftBlocking)
-                {
-                    case 2:
-                        return $"> Your arm starts to feel a little weak from holding up your shield.\n";
-                        break;
-                    case 1:
-                        return $"> Your arm is about to give out from holding up your shield.\n";
-                        break;
-                }
-            }
-            else { Block(); return $"> You lower your shield from exhaustion."; }
+                return $"> Your shield is still protecting you.\n";
+             }
+            else { Block(); return $"> You lower your shield from exhaustion.\n"; }
             return "";
         }
     }

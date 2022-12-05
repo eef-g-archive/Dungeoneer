@@ -51,6 +51,9 @@ namespace DungeonDelver
         public event Action<int> MonsterUpdate;
         public event Action<int> NewMonster;
         public event Action<string> GameEnd;
+        public event Action<int> PlayerMaxBar;
+        public event Action<int> PlayerUpdate;
+        public event Action<bool> PlayerBlockIcon;
 
 
         // @Author: Ethan Gray
@@ -68,7 +71,8 @@ namespace DungeonDelver
             for(int i = 1; i <= len * 2; i++)
             {
                 // Need to add a buffer room between each room to give player 1 turn to heal or block.
-                Monster monster = monster_fact.GenerateMonster();
+
+                Monster monster = monster_fact.GenerateRandomMonster(0);
                 Room room = new Room(i, monster, 15);
                 rooms.AddLast(room);
             }
@@ -128,24 +132,24 @@ namespace DungeonDelver
 
         private void RoomResults()
         {
-            TextOut("\n==========================================\n");
-            TextOut($"| You defeated the enemy {currentEnemy.name}\n");
-            TextOut($"| This gained you {currentEnemy.xp_value}\n");
-            TextOut($"| You proceed to the next room.\n");
             TextOut("==========================================\n");
+            TextOut($"| You defeated the enemy {currentEnemy.name}\n");
+            TextOut($"| This gained you {currentEnemy.xp_value} experience points!\n");
+            TextOut($"| You proceed to the next room.\n");
+            TextOut("==========================================");
         }
 
         private void LevelUpResults()
         {
-            TextOut("\n==========================================\n");
-            TextOut($"| You leveled up!");
+            TextOut("==========================================\n");
+            TextOut($"| You leveled up!\n");
             TextOut($"| Your max health is now {player.max_health}.\n");
             TextOut($"| Your max damage is now {player.Damage}.\n");
-            TextOut("==========================================\n");
+            TextOut("==========================================");
         }
 
         // @Author: Ethan Gray
-        // Last Edited - 11/15/22
+        // Created - 11/15/22
         // @Purpose:
         /*
          * 
@@ -163,27 +167,41 @@ namespace DungeonDelver
                     current_room++;
                     ImageOut(Properties.Resources.CreatureBackground);
                     player.xp_gained += currentEnemy.xp_value;
+                    TextOut("");
                     RoomResults();
                     wait(2000);
+                    TextOut("");
                     int x = player.xp_gained / 15;
                     if(player.xp_gained / 15 > player._level) 
                     { 
                         player.LevelUp();
+                        PlayerMaxBar(player.max_health);
                         LevelUpResults();
                         wait(2000);
+                        TextOut("");
                     }
                     NextRoom();
                 }
                 else
                 {
-                    if(playerAction != "RUN")
+                    if (playerAction != "RUN")
+                    {
                         MonsterTurn();
+                        PlayerUpdate(player.Health);
+                    }
+                }
+                
+                if(player.Health <= 0)
+                {
+                    //Game ends
+                    GameEnd("Death");
                 }
 
                 if(player.Blocking) 
-                { 
+                {
                     TextOut(player.BlockCountdown());
                 }
+                PlayerBlockIcon(player.Blocking);
             }   
             else { TextOut("> You already finished the dungeon. Go home!\n");  }
         }
@@ -203,15 +221,16 @@ namespace DungeonDelver
                 case "HEAL":
                     player.Heal();
                     outputText = player.Heal();
+                    PlayerUpdate(player.Health);
                     TextOut(outputText + "\n");
                     break;
                 case "RUN":
                     current_room = 99999;
-                    TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n");
+                    TextOut("");
+                    TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n> You forget all the experience you gained in this dungeon.\n");
                     ImageOut(Properties.Resources.CreatureBackground);
                     wait(2000);
                     GameEnd("end");
-                    // Need to put logic in here to quit the game.
                     break;
             }
         }
@@ -221,11 +240,9 @@ namespace DungeonDelver
             outputText = currentEnemy.Attack(currentEnemy, player);
             TextOut(outputText + "\n");
         }
-
-
-
-
         
+
+
         // This was taken from Stack Overflow
         // Credit: Oringinally written by Said on Oct. 20, 2018. Edited by AustinWBryan on Jun. 29, 2020
         public void wait(int milliseconds)

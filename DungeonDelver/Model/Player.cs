@@ -28,7 +28,6 @@ namespace DungeonDelver
             name = "The player";
         }
 
-
         public void LoadStats(string name, int completed, int attempted, int xp)
         {
             this.name = name;
@@ -43,7 +42,10 @@ namespace DungeonDelver
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());
             int healVal = healPower + rand.Next(0, 6);
-            _health += healVal;
+            if (_health + healVal <= max_health)
+                _health += healVal;
+            else
+                _health = max_health;
             return $"You heal yourself for {healVal} hit points!";
         }
 

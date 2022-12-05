@@ -1,0 +1,21 @@
+@startuml
+class Form1 <<partial>> {
+    + outputText : string
+    + userName : string
+    + Form1()
+    +  <<event>> PlayerInput : Action<string> 
+    +  <<event>> NewGame : Action<string> 
+    +  <<event>> LoadGame : Action<string> 
+    + ToggleInput() : void
+    + ShowGame() : void
+    + ShowMenu() : void
+    + StatusText : string <<get>> <<set>>
+    + MonsterImage : Bitmap <<get>> <<set>>
+    + GameDifficulty : int <<get>>
+    + ProfileList : string <<get>> <<set>>
+    + ExistingProfiles : List<string> <<get>>
+    + MonsterMax : int <<get>> <<set>>
+    + MonsterHealth : int <<get>> <<set>>
+}
+Form <|-- Form1
+@enduml

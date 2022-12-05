@@ -123,6 +123,16 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Shield_icon {
+            get {
+                object obj = ResourceManager.GetObject("Shield_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Slimev1 {
             get {
                 object obj = ResourceManager.GetObject("Slimev1", resourceCulture);

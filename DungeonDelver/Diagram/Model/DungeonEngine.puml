@@ -1,0 +1,21 @@
+@startuml
+class DungeonEngine {
+    + rooms : LinkedList<Room>
+    + earnedXP : int = 0
+    + current_room : int = 0
+    + monsterImage : Bitmap
+    + outputText : string = ""
+    + player : Player
+    + dungeonLength : int
+    + DungeonEngine()
+    +  <<event>> TextOut : Action<string> 
+    +  <<event>> ImageOut : Action<Bitmap> 
+    +  <<event>> MonsterUpdate : Action<int> 
+    +  <<event>> NewMonster : Action<int> 
+    +  <<event>> GameEnd : Action<string> 
+    + GenerateDungeon(len:int) : void
+    + NextRoom() : void
+    + GameTurn(playerAction:string) : void
+    + wait(milliseconds:int) : void
+}
+@enduml

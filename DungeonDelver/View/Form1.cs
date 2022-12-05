@@ -85,11 +85,13 @@ namespace DungeonDelver
                 userName = userNameInput.Text;
                 NewGame(userName);
             }
+            playerHealthText.Text = $"{userNameInput.Text}'s Health";
         }
 
         private void loadGameButton_Click(object sender, EventArgs e)
         {
             LoadGame(savedGamesList.Text);
+            playerHealthText.Text = $"{savedGamesList.Text}'s Health";
         }
 
 
@@ -113,7 +115,6 @@ namespace DungeonDelver
             gamePanel.Enabled = true;
             gamePanel.BringToFront();
             menuPanel.Enabled = false;
-
         }
 
         public void ShowMenu()
@@ -147,7 +148,17 @@ namespace DungeonDelver
         /*******************************\
          *        Item Accessors       *
         \*******************************/
-        public string StatusText { get { return null; }  set { statusText.Text += value; } }
+        public string StatusText 
+        { 
+            get { return null; }  
+            set 
+            {
+                if (value != "")
+                    statusText.Text += value;
+                else
+                    statusText.Text = "";
+            }
+        }
         public Bitmap MonsterImage { get { return null; } set { imageDisplay.Image = value; } }
 
         public int GameDifficulty
@@ -177,7 +188,17 @@ namespace DungeonDelver
         public string ProfileList
         {
             get { return savedGamesList.Text;  }
-            set { savedGamesList.Items.Add(value); }
+            set 
+            {
+                if (value == "")
+                {
+                    savedGamesList.Items.Clear();
+                }
+                else
+                {
+                    savedGamesList.Items.Add(value);
+                }
+            }
         }
 
         public List<string> ExistingProfiles
@@ -208,6 +229,43 @@ namespace DungeonDelver
                 if (value < 0) { monsterHealthBar.Value = 0; }
                 else { monsterHealthBar.Value = value; }  
             }
+        }
+
+        public int PlayerMax
+        {
+            get { return playerHealthBar.Maximum; }
+            set { playerHealthBar.Maximum = value; playerHealthBar.Value = value; }
+        }
+
+        public int PlayerHealth
+        {
+            get { return playerHealthBar.Value;  }
+            set
+            {
+                if(value < 0 ) {  playerHealthBar.Value = 0; }
+                else { playerHealthBar.Value = value;  }
+            }
+        }
+
+        public int[] HealthText
+        {
+            get { return null; }
+            set
+            {
+                playerHPText.Text = $"{value[0]} \\ {value[1]}";
+            }
+        }
+
+        public string NewPlayerName
+        {
+            get { return "DUMMY TEXT";  }
+            set { userNameInput.Text = value; }
+        }
+
+        public bool Block
+        {
+            get { return playerBlockingIcon.Visible; }
+            set { playerBlockingIcon.Visible = value; }
         }
     }
 }

@@ -1,0 +1,8 @@
+@startuml
+abstract class Monster {
+    + defaultPortrait : Bitmap
+    + {abstract} FactoryMethod() : Monster
+    + xp_value : int
+}
+Being <|-- Monster
+@enduml

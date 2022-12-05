@@ -1,0 +1,7 @@
+@startuml
+class Goblin {
+    + <<override>> FactoryMethod() : Monster
+    + Goblin()
+}
+Monster <|-- Goblin
+@enduml

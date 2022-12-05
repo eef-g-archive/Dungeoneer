@@ -8,8 +8,12 @@ namespace DungeonDelver
 {
     internal class DungeonController
     {
+        // Create variables that will store the model and view components
         public Form1 app;
         DungeonEngine engine;
+
+        // Create variables that will store data to be used later
+        int[] player_stats = { 0, 0 };
 
         public DungeonController(Form1 app)
         {
@@ -20,19 +24,25 @@ namespace DungeonDelver
             app.PlayerInput += new Action<string>(PlayerinputHandler);
             app.NewGame += new Action<string>(BeginNewGame);
             app.LoadGame += new Action<string>(LoadOldGame);
+
+
             engine.TextOut += new Action<string>(TextHandler);
             engine.ImageOut += new Action<Bitmap>(ImageHandler);
             engine.GameEnd += new Action<string>(FinishDungeon);
             engine.MonsterUpdate += new Action<int>(UpdateMonsterHealth);
             engine.NewMonster += new Action<int>(LoadHealthBar);
+            engine.PlayerMaxBar += new Action<int>(StartPlayerHealthBar);
+            engine.PlayerUpdate += new Action<int>(UpdatePlayerBar);
+            engine.PlayerBlockIcon += new Action<bool>(UpdateBlockingIcon);
 
             UpdateSavedProfileList();
+            app.ShowMenu();
         }
 
         /*******************************\
          *          Functions          *
         \*******************************/
-
+        #region ControllerFunctions
 
         private void SaveGame()
         {
@@ -42,9 +52,10 @@ namespace DungeonDelver
 
             if(!System.IO.Directory.Exists(docPath))
             {
-                System.IO.Directory.CreateDirectory(docPath);
+                DirectoryInfo dirInfo = Directory.CreateDirectory(docPath);
+                dirInfo.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{engine.player.name}_save.txt")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{engine.player.name}_save.delve")))
             {
                 foreach (string line in lines)
                     outputFile.WriteLine(line);
@@ -59,7 +70,8 @@ namespace DungeonDelver
 
             if(!System.IO.Directory.Exists(docPath))
             {
-                System.IO.Directory.CreateDirectory(docPath);
+                DirectoryInfo dirInfo = Directory.CreateDirectory(docPath);
+                dirInfo.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
 
             string[] fileNames = System.IO.Directory.GetFiles(docPath);
@@ -80,6 +92,7 @@ namespace DungeonDelver
 
         private void UpdateSavedProfileList()
         {
+            app.ProfileList = "";
             List<string> savedProfiles = GetSavedProfiles();
             foreach(string profile in savedProfiles)
             {
@@ -92,11 +105,32 @@ namespace DungeonDelver
             engine.GenerateDungeon(app.GameDifficulty);
             app.ShowGame();
             engine.NextRoom();
+            StartPlayerHealthBar(engine.player.Health);
+            Console.WriteLine(app.PlayerMax);
         }
+
+        private void DeleteGame(string playerName)
+        {
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            docPath += "\\DungeonDelver\\";
+            DirectoryInfo di = new DirectoryInfo(docPath);
+            foreach(FileInfo file in di.GetFiles())
+            {
+                string fileName = file.Name;
+                int fileEnd = fileName.LastIndexOf('_');
+                string saveFile = fileName.Substring(0, fileEnd);
+                if(saveFile == playerName)
+                {
+                    file.Delete();
+                }
+            }
+        }
+        #endregion
 
         /*******************************\
          *        Custom Events        *
         \*******************************/
+        #region EventHandlers
         private void PlayerinputHandler(string playerInput)
         {
             app.ToggleInput();
@@ -133,18 +167,20 @@ namespace DungeonDelver
                 string error = $"Sorry, the name {playerName} is already someone's saved file!\nTry a different name or load your game if {playerName} is your profile name!";
                 MessageBox.Show(error);
             }
+            app.NewPlayerName = "";
         }
 
         private void LoadOldGame(string playerName)
         {
             // Load stats from file first by using the playerName variable
-            string fileName = playerName + "_save.txt";
+            string fileName = playerName + "_save.delve";
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             docPath += "\\DungeonDelver\\";
 
             if (!System.IO.Directory.Exists(docPath))
             {
-                System.IO.Directory.CreateDirectory(docPath);
+                DirectoryInfo dirInfo = Directory.CreateDirectory(docPath);
+                dirInfo.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
             }
 
             int index = 0;
@@ -186,8 +222,23 @@ namespace DungeonDelver
 
         private void FinishDungeon(string end)
         {
-            SaveGame();
+            if (end == "Death")
+            {
+                try
+                {
+                    DeleteGame(engine.player.name);
+                }
+                catch (Exception ex)
+                {
+                    // If this is a brand new file and hadn't been saved yet, don't worry!
+                }
+            }
+            else
+            {
+                SaveGame();
+            }
             app.ShowMenu();
+            UpdateSavedProfileList();
         }
 
         private void LoadHealthBar(int max)
@@ -199,5 +250,28 @@ namespace DungeonDelver
         {
             app.MonsterHealth = health;
         }
+
+        private void StartPlayerHealthBar(int max)
+        {
+            app.PlayerMax = max;
+            player_stats[0] = max;
+            player_stats[1] = max;
+            app.HealthText = player_stats;
+            app.PlayerHealth = max;
+        }
+
+        private void UpdatePlayerBar(int health)
+        {
+            app.PlayerHealth = health;
+            player_stats[0] = health;
+            app.HealthText = player_stats;
+        }
+
+        private void UpdateBlockingIcon(bool status)
+        {
+            app.Block = status;
+        }
+
+        #endregion
     }
 }

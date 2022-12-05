@@ -1,0 +1,16 @@
+@startuml
+class Player {
+    healPower : int = 3
+    + xp_gained : int = 0
+    + dungeons_completed : int = 0
+    + dungeons_attempted : int = 0
+    + _level : int = 0
+    + max_health : int = 20
+    + Damage : int <<get>>
+    + Player()
+    + LoadStats(name:string, completed:int, attempted:int, xp:int) : void
+    + Heal() : string
+    + LevelUp() : void
+}
+Being <|-- Player
+@enduml

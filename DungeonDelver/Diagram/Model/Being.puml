@@ -1,0 +1,10 @@
+@startuml
+class Being {
+    + Health : int <<get>> <<set>>
+    + Blocking : bool <<get>>
+    + name : string
+    + Attack(a:Being, b:Being) : string
+    + Block() : void
+    + BlockCountdown() : string
+}
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class Slime {
+    + <<override>> FactoryMethod() : Monster
+    + Slime()
+}
+Monster <|-- Slime
+@enduml

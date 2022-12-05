@@ -1,0 +1,20 @@
+startuml
+!include .\Controller\DungeonController.puml
+!include .\Model\Being.puml
+!include .\Model\DungeonEngine.puml
+!include .\Model\Goblin.puml
+!include .\Model\Goobo.puml
+!include .\Model\Loan.puml
+!include .\Model\Monster.puml
+!include .\Model\MonsterFactory.puml
+!include .\Model\Player.puml
+!include .\Model\Program.puml
+!include .\Model\Room.puml
+!include .\Model\Slime.puml
+!include .\Properties\Resources.Designer.puml
+!include .\View\Form1.puml
+!include .\View\Form1.Designer.puml
+!include .\obj\Debug\net6.0-windows\.NETCoreApp,Version=v6.0.AssemblyAttributes.puml
+!include .\obj\Debug\net6.0-windows\DungeonDelver.AssemblyInfo.puml
+!include .\obj\Debug\net6.0-windows\DungeonDelver.GlobalUsings.g.puml
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class Goobo {
+    + <<override>> FactoryMethod() : Monster
+    + Goobo()
+}
+Monster <|-- Goobo
+@enduml

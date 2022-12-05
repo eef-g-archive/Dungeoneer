@@ -1,0 +1,7 @@
+@startuml
+class DungeonController {
+    + app : Form1
+    engine : DungeonEngine
+    + DungeonController(app:Form1)
+}
+@enduml

@@ -1,0 +1,4 @@
+@startuml
+class Form1 <<partial>> {
+}
+@enduml

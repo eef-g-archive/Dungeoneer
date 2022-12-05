@@ -1,0 +1,7 @@
+@startuml
+class Loan {
+    + <<override>> FactoryMethod() : Monster
+    + Loan()
+}
+Monster <|-- Loan
+@enduml

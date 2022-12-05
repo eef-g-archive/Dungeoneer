@@ -1,0 +1,7 @@
+@startuml
+class Room {
+    + enemy : Monster
+    + xp_reward : int
+    + Room(id:int, enemy:Monster, xp_reward:int)
+}
+@enduml
