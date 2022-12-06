@@ -63,6 +63,16 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ButtonBG {
+            get {
+                object obj = ResourceManager.GetObject("ButtonBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CreatureBackground {
             get {
                 object obj = ResourceManager.GetObject("CreatureBackground", resourceCulture);
@@ -106,6 +116,36 @@ namespace DungeonDelver.Properties {
         internal static System.Drawing.Bitmap Loanv1 {
             get {
                 object obj = ResourceManager.GetObject("Loanv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MainMenu {
+            get {
+                object obj = ResourceManager.GetObject("MainMenu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mainMenu2 {
+            get {
+                object obj = ResourceManager.GetObject("mainMenu2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PlayerSprite {
+            get {
+                object obj = ResourceManager.GetObject("PlayerSprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

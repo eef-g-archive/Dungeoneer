@@ -31,6 +31,10 @@ namespace DungeonDelver
             backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
             imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
             difficultySelect.SelectedIndex = 0;
+
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            imageDisplay.BackColor = Color.Transparent;
+            imageDisplay.Parent = backgroundImage;
         }
 
         // Created this custom event that is handled by the Model-Object (DungeonProgram.cs)
@@ -41,12 +45,12 @@ namespace DungeonDelver
 
         /*******************\
         |*   Form Inputs   *|
-        \*******************/ 
-        
+        \*******************/
+        #region Input-Handling
 
 
         // *** GAME PANEL INPUT HANDLING ***
-        
+        #region Game Panel
         /* @Author: Ethan Gray
          * Last Edited: 11/07/22
          * Purpose:
@@ -76,16 +80,72 @@ namespace DungeonDelver
             PlayerInput("RUN");
         }
 
+        #endregion
+
+
         // *** MENU PANEL INPUT HANDLING *** \\
+        #region Menu Panel
+
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            ToggleMenu();
+            newChoiceButton.Enabled = true;
+            newChoiceButton.Visible = true;
+            loadChoiceButton.Enabled = true;
+            loadChoiceButton.Visible = true;
+        }
+
+        private void newChoiceButton_Click(object sender, EventArgs e)
+        {
+            ToggleMenu();
+            difficultyLabel.Enabled = true;
+            difficultyLabel.Visible = true;
+            difficultySelect.Enabled = true;
+            difficultySelect.Visible = true;
+            newGameLabel.Enabled = true;
+            newGameLabel.Visible = true;
+            userNameInput.Enabled = true;
+            userNameInput.Visible = true;
+            newGameButton.Enabled = true;
+            newGameButton.Visible = true;
+            backButton.Enabled = true;
+            backButton.Visible = true;
+        }
+
+        private void loadChoiceButton_Click(object sender, EventArgs e)
+        {
+            ToggleMenu();
+            difficultyLabel.Enabled = true;
+            difficultyLabel.Visible = true;
+            difficultySelect.Enabled = true;
+            difficultySelect.Visible = true;
+            loadLabel.Enabled = true;
+            loadLabel.Visible = true;
+            savedGamesList.Enabled = true;
+            savedGamesList.Visible = true;
+            loadGameButton.Enabled = true;
+            loadGameButton.Visible = true;
+            backButton.Enabled = true;
+            backButton.Visible = true;
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            ToggleMenu();
+            newChoiceButton.Enabled = true;
+            newChoiceButton.Visible = true;
+            loadChoiceButton.Enabled = true;
+            loadChoiceButton.Visible = true;
+        }
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
             if (userNameInput.Text != "")
             {
                 userName = userNameInput.Text;
+                playerHealthText.Text = $"{userName}'s Health";
                 NewGame(userName);
             }
-            playerHealthText.Text = $"{userNameInput.Text}'s Health";
         }
 
         private void loadGameButton_Click(object sender, EventArgs e)
@@ -93,14 +153,16 @@ namespace DungeonDelver
             LoadGame(savedGamesList.Text);
             playerHealthText.Text = $"{savedGamesList.Text}'s Health";
         }
+        #endregion
 
-
-
+        #endregion
 
 
         /*******************************\
          *   General Purpose Methods   *
         \*******************************/
+        #region Functions
+
 
         public void ToggleInput()
         {
@@ -119,17 +181,49 @@ namespace DungeonDelver
 
         public void ShowMenu()
         {
+            ToggleMenu();
             menuPanel.Enabled = true;
+            startButton.Visible = true;
+            startButton.Enabled = true;
             menuPanel.BringToFront();
             statusText.Text = "";
             gamePanel.Enabled = false;
         }
 
+        public void ToggleMenu()
+        {
+            startButton.Enabled = false;
+            startButton.Visible = false;
+            newChoiceButton.Enabled = false;
+            newChoiceButton.Visible = false;
+            loadChoiceButton.Enabled = false;
+            loadChoiceButton.Visible = false;
+            difficultyLabel.Enabled = false;
+            difficultyLabel.Visible = false;
+            difficultySelect.Enabled = false;
+            difficultySelect.Visible = false;
+            loadLabel.Enabled = false;
+            loadLabel.Visible = false;
+            savedGamesList.Enabled = false;
+            savedGamesList.Visible = false;
+            loadGameButton.Enabled = false;
+            loadGameButton.Visible = false;
+            newGameLabel.Enabled = false;
+            newGameLabel.Visible = false;
+            userNameInput.Enabled = false;
+            userNameInput.Visible = false;
+            newGameButton.Enabled = false;
+            newGameButton.Visible = false;
+            backButton.Enabled = false;
+            backButton.Visible = false;
+        }
 
+        #endregion
 
         /*******************************\
          *      Behavior Changes       *
         \*******************************/
+        #region Custom-Behaviors
 
         // @Author: Ethan Gray
         // Last Edited - 11/01/22
@@ -145,9 +239,13 @@ namespace DungeonDelver
             statusText.ScrollToCaret();
         }
 
+        #endregion
+
         /*******************************\
          *        Item Accessors       *
         \*******************************/
+        #region Getters-Setters
+
         public string StatusText 
         { 
             get { return null; }  
@@ -159,6 +257,7 @@ namespace DungeonDelver
                     statusText.Text = "";
             }
         }
+
         public Bitmap MonsterImage { get { return null; } set { imageDisplay.Image = value; } }
 
         public int GameDifficulty
@@ -267,5 +366,11 @@ namespace DungeonDelver
             get { return playerBlockingIcon.Visible; }
             set { playerBlockingIcon.Visible = value; }
         }
+
+
+
+        #endregion
+
+
     }
 }

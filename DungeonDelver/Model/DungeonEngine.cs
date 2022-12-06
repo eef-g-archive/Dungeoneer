@@ -165,7 +165,7 @@ namespace DungeonDelver
                 if (currentEnemy.Health <= 0)
                 {
                     current_room++;
-                    ImageOut(Properties.Resources.CreatureBackground);
+                    ImageOut(null);
                     player.xp_gained += currentEnemy.xp_value;
                     TextOut("");
                     RoomResults();

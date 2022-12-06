@@ -148,4 +148,16 @@
   <data name="Shield_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Shield_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ButtonBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerSprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayerSprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MainMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MainMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mainMenu2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mainMenu2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
