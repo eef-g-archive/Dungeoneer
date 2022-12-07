@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.fightButton = new System.Windows.Forms.Button();
             this.backgroundImage = new System.Windows.Forms.PictureBox();
             this.blockButton = new System.Windows.Forms.Button();
@@ -58,6 +59,8 @@
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.resultsPanel = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageDisplay)).BeginInit();
             this.gamePanel.SuspendLayout();
@@ -65,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.playerIcon)).BeginInit();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.resultsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // fightButton
@@ -490,20 +494,42 @@
             // 
             // resultsPanel
             // 
+            this.resultsPanel.Controls.Add(this.richTextBox1);
+            this.resultsPanel.Controls.Add(this.label1);
             this.resultsPanel.Location = new System.Drawing.Point(0, 0);
             this.resultsPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.resultsPanel.Name = "resultsPanel";
             this.resultsPanel.Size = new System.Drawing.Size(583, 963);
             this.resultsPanel.TabIndex = 12;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("RuneScape UF", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Location = new System.Drawing.Point(50, 107);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(472, 579);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "Room 1 ......................................................................1500" +
+    "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(254, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Results";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 950);
-            this.Controls.Add(this.gamePanel);
-            this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.resultsPanel);
+            this.Controls.Add(this.menuPanel);
+            this.Controls.Add(this.gamePanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Dungen Delver";
             ((System.ComponentModel.ISupportInitialize)(this.backgroundImage)).EndInit();
@@ -515,6 +541,8 @@
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.resultsPanel.ResumeLayout(false);
+            this.resultsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,5 +579,7 @@
         private Button newChoiceButton;
         private Label newGameLabel;
         private Button backButton;
+        private RichTextBox richTextBox1;
+        private Label label1;
     }
 }

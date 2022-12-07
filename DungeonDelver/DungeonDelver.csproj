@@ -6,12 +6,17 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>slimecon-Big.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Game_Classses\**" />
     <EmbeddedResource Remove="Game_Classses\**" />
     <None Remove="Game_Classses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="slimecon-Big.ico" />
   </ItemGroup>
 
   <ItemGroup>
