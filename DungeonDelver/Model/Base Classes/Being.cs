@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model.Base
 {
     internal class Being
     {

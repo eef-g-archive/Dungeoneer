@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model.Monsters
 {
     internal class Goblin : Monster
     {
@@ -21,6 +22,7 @@ namespace DungeonDelver
             _health = 15;
             _damage = 5;
             defaultPortrait = new Bitmap(Properties.Resources.Goblinv1);
+            hurtPortrait = defaultPortrait;
             xp_value = 10;
         }
 

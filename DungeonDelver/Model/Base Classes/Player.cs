@@ -6,7 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model.Base
 {
     internal class Player : Being
     {

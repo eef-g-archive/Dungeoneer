@@ -93,6 +93,26 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Frebblev1 {
+            get {
+                object obj = ResourceManager.GetObject("Frebblev1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frebblev1_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Frebblev1_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Goblinv1 {
             get {
                 object obj = ResourceManager.GetObject("Goblinv1", resourceCulture);
@@ -106,6 +126,26 @@ namespace DungeonDelver.Properties {
         internal static System.Drawing.Bitmap Gooblinv1 {
             get {
                 object obj = ResourceManager.GetObject("Gooblinv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Goobo_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Goobo_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Loan_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Loan_hurt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,6 +183,46 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Meepv1 {
+            get {
+                object obj = ResourceManager.GetObject("Meepv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Meepv1_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Meepv1_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pinchingtonv1 {
+            get {
+                object obj = ResourceManager.GetObject("Pinchingtonv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pinchingtonv1_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Pinchingtonv1_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PlayerSprite {
             get {
                 object obj = ResourceManager.GetObject("PlayerSprite", resourceCulture);
@@ -166,6 +246,16 @@ namespace DungeonDelver.Properties {
         internal static System.Drawing.Bitmap Shield_icon {
             get {
                 object obj = ResourceManager.GetObject("Shield_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Slime_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Slime_hurt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +286,26 @@ namespace DungeonDelver.Properties {
         internal static System.Drawing.Bitmap Slimev1 {
             get {
                 object obj = ResourceManager.GetObject("Slimev1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Squiffer_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Squiffer_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Squifferv1 {
+            get {
+                object obj = ResourceManager.GetObject("Squifferv1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

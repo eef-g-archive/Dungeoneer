@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model
 {
     internal class Room
     {

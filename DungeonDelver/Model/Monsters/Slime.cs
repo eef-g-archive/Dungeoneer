@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
 namespace DungeonDelver
 {
@@ -19,6 +20,7 @@ namespace DungeonDelver
             _health = 10;
             _damage = 2;
             defaultPortrait = new Bitmap(Properties.Resources.Slimev1);
+            hurtPortrait = new Bitmap(Properties.Resources.Slime_hurt);
             xp_value = 5;
         }
 

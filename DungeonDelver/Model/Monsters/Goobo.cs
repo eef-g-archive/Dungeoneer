@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model.Monsters
 {
     internal class Goobo : Monster
     {
@@ -20,6 +21,7 @@ namespace DungeonDelver
             _health = 30;
             _damage = 1;
             defaultPortrait = new Bitmap(Properties.Resources.Gooblinv1);
+            hurtPortrait = new Bitmap(Properties.Resources.Goobo_hurt);
             xp_value = 25;
         }
     }

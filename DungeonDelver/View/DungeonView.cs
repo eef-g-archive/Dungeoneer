@@ -15,14 +15,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Text;
 
-namespace DungeonDelver
+namespace DungeonDelver.View
 {
-    public partial class Form1 : Form
+    public partial class DungeonView : Form
     {
         public string outputText;
         public string userName;
 
-        public Form1()
+        public DungeonView()
         {
             // First section of code is setting Form elements to look and behave a specific way.
             InitializeComponent();
@@ -30,7 +30,6 @@ namespace DungeonDelver
             statusText.TextChanged += statusText_TextChanged;
             backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
             imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
-            difficultySelect.SelectedIndex = 0;
 
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             imageDisplay.BackColor = Color.Transparent;
@@ -41,6 +40,7 @@ namespace DungeonDelver
         public event Action<string> PlayerInput;
         public event Action<string> NewGame;
         public event Action<string> LoadGame;
+        public event Action<int> ChangeDifficulty;
 
 
         /*******************\
@@ -129,6 +129,31 @@ namespace DungeonDelver
             backButton.Visible = true;
         }
 
+        private void difficultySelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string diff = difficultySelect.Text;
+            switch(diff)
+            {
+                case "Easy":
+                    ChangeDifficulty(0);
+                    difficultyImage.Image = Properties.Resources.Slimev1;
+                    break;
+                case "Medium":
+                    ChangeDifficulty(0);
+                    difficultyImage.Image = Properties.Resources.Frebblev1;
+                    break;
+                case "Hard":
+                    ChangeDifficulty(0);
+                    difficultyImage.Image = Properties.Resources.Squifferv1;
+                    break;
+                case "Extra Hard":
+                    ChangeDifficulty(3);
+                    difficultyImage.Image = Properties.Resources.Pinchingtonv1;
+                    break;
+            }
+        }
+
+
         private void backButton_Click(object sender, EventArgs e)
         {
             ToggleMenu();
@@ -188,6 +213,7 @@ namespace DungeonDelver
             menuPanel.BringToFront();
             statusText.Text = "";
             gamePanel.Enabled = false;
+            difficultySelect.SelectedIndex = 0;
         }
 
         public void ToggleMenu()
@@ -366,6 +392,7 @@ namespace DungeonDelver
             get { return playerBlockingIcon.Visible; }
             set { playerBlockingIcon.Visible = value; }
         }
+
 
 
 

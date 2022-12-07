@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Monsters;
+using DungeonDelver.Model.Base;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model
 {
     // TODO:
     /*
@@ -37,7 +39,7 @@ namespace DungeonDelver
                     break;
                 case 3: // VERY HARD DIFFICULTY
                     //m = GenerateExtraHardMonster(monster_val);
-                    m = GenerateEasyMonster(monster_val);
+                    m = GenerateExtraHardMonster(monster_val);
                     break;
                 default:
                     m = new Slime();
@@ -49,6 +51,7 @@ namespace DungeonDelver
             // If all else fails, just throw a slime out there.
             return m;
         }
+
 
         private Monster GenerateEasyMonster(int val)
         {
@@ -97,12 +100,32 @@ namespace DungeonDelver
         {
 
         }
+*/
 
         private Monster GenerateExtraHardMonster(int val)
         {
-
+            Monster m;
+            // Use switch case to run with values of monsters in the easy monsters pool.
+            // Easy monsters pool:
+            // COMMON: Pinchington
+            // UNCOMMON: Frebble
+            // RARE: Meep
+            switch (val)
+            {
+                case <= 500:
+                    m = new Pinchington();
+                    break;
+                case > 500 and <= 890:
+                    m = new Frebble();
+                    break;
+                case > 890:
+                    m = new Meep();
+                    break;
+                default:
+                    m = new Slime();
+            }
+            return m;
         }
 
-        */
     }
 }

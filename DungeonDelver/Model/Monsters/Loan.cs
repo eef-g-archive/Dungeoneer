@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
-namespace DungeonDelver
+namespace DungeonDelver.Model.Monsters
 {
     internal class Loan : Monster
     {
@@ -19,6 +20,7 @@ namespace DungeonDelver
             _health = 12000;
             _damage = 900;
             defaultPortrait = new Bitmap(Properties.Resources.Loanv1);
+            hurtPortrait = new Bitmap(Properties.Resources.Loan_hurt);
             xp_value = 9999999;
         }
 

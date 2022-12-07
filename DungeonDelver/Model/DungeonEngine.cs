@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DungeonDelver.Model.Base;
 
 
 ///////////////
@@ -22,7 +23,7 @@ using System.Threading.Tasks;
  * 
  * 
  */
-namespace DungeonDelver
+namespace DungeonDelver.Model
 {
     internal class DungeonEngine
     {
@@ -32,6 +33,7 @@ namespace DungeonDelver
         public int current_room = 0;
         public Bitmap monsterImage;
         public string outputText = "";
+        public int dungeonDifficulty = 0;
 
         // Set up all the protected & private variables that are only accessible by this class
         protected bool playerTurn = true;
@@ -72,7 +74,7 @@ namespace DungeonDelver
             {
                 // Need to add a buffer room between each room to give player 1 turn to heal or block.
 
-                Monster monster = monster_fact.GenerateRandomMonster(0);
+                Monster monster = monster_fact.GenerateRandomMonster(dungeonDifficulty);
                 Room room = new Room(i, monster, 15);
                 rooms.AddLast(room);
             }
@@ -160,8 +162,19 @@ namespace DungeonDelver
             {
                 wait(500);
                 PlayerTurn(playerAction);
-                MonsterUpdate(currentEnemy.Health);
-                wait(500);
+                if (outputText.Contains("is hurt for"))
+                {
+                    ImageOut(currentEnemy.hurtPortrait);
+                    MonsterUpdate(currentEnemy.Health);
+                    wait(850);
+                    ImageOut(currentEnemy.defaultPortrait);
+                }
+                else
+                {
+                    MonsterUpdate(currentEnemy.Health);
+                    wait(500);
+                }
+
                 if (currentEnemy.Health <= 0)
                 {
                     current_room++;

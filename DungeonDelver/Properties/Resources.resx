@@ -166,4 +166,37 @@
   <data name="slimecon_Big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\slimecon-Big.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Frebblev1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Frebblev1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Frebblev1_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Frebblev1_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Goobo_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Goobo_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loan_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Loan_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Meepv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Meepv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Meepv1_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Meepv1_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pinchingtonv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pinchingtonv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pinchingtonv1_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pinchingtonv1_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Slime_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Slime_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Squifferv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Squifferv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Squiffer_hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Squiffer_hurt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
