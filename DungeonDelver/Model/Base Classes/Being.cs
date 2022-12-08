@@ -23,7 +23,7 @@ namespace DungeonDelver.Model.Base
         public int Health { get { return _health; } set { _health = value; } } // Gives us a public way to access the health of the being if needed
         public bool Blocking {  get { return _isBlocking;  } }
         public string name;
-        protected int _damage;
+        public int _damage;
         protected bool _isBlocking = false;
         protected int _turnsLeftBlocking = 0;
 
