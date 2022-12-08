@@ -59,7 +59,10 @@
             this.userNameInput = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.resultsPanel = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.highScoresBox = new System.Windows.Forms.RichTextBox();
+            this.mainMenuButton = new System.Windows.Forms.Button();
+            this.replayButton = new System.Windows.Forms.Button();
+            this.resultsTextbox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageDisplay)).BeginInit();
@@ -80,7 +83,7 @@
             this.fightButton.Font = new System.Drawing.Font("RuneScape UF", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.fightButton.ForeColor = System.Drawing.Color.Gold;
             this.fightButton.Location = new System.Drawing.Point(11, 437);
-            this.fightButton.Margin = new System.Windows.Forms.Padding(2);
+            this.fightButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fightButton.Name = "fightButton";
             this.fightButton.Size = new System.Drawing.Size(185, 63);
             this.fightButton.TabIndex = 0;
@@ -109,7 +112,7 @@
             this.blockButton.Font = new System.Drawing.Font("RuneScape UF", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.blockButton.ForeColor = System.Drawing.Color.Gold;
             this.blockButton.Location = new System.Drawing.Point(11, 502);
-            this.blockButton.Margin = new System.Windows.Forms.Padding(2);
+            this.blockButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.blockButton.Name = "blockButton";
             this.blockButton.Size = new System.Drawing.Size(185, 64);
             this.blockButton.TabIndex = 2;
@@ -126,7 +129,7 @@
             this.healButton.Font = new System.Drawing.Font("RuneScape UF", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.healButton.ForeColor = System.Drawing.Color.Gold;
             this.healButton.Location = new System.Drawing.Point(208, 436);
-            this.healButton.Margin = new System.Windows.Forms.Padding(2);
+            this.healButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.healButton.Name = "healButton";
             this.healButton.Size = new System.Drawing.Size(185, 64);
             this.healButton.TabIndex = 3;
@@ -167,7 +170,7 @@
             this.runButton.Font = new System.Drawing.Font("RuneScape UF", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.runButton.ForeColor = System.Drawing.Color.Gold;
             this.runButton.Location = new System.Drawing.Point(208, 503);
-            this.runButton.Margin = new System.Windows.Forms.Padding(2);
+            this.runButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(185, 64);
             this.runButton.TabIndex = 7;
@@ -193,7 +196,7 @@
             this.gamePanel.Controls.Add(this.runButton);
             this.gamePanel.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.gamePanel.Location = new System.Drawing.Point(-4, 0);
-            this.gamePanel.Margin = new System.Windows.Forms.Padding(2);
+            this.gamePanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gamePanel.Name = "gamePanel";
             this.gamePanel.Size = new System.Drawing.Size(412, 574);
             this.gamePanel.TabIndex = 8;
@@ -250,7 +253,7 @@
             // 
             this.playerHealthBar.ForeColor = System.Drawing.Color.Lime;
             this.playerHealthBar.Location = new System.Drawing.Point(97, 328);
-            this.playerHealthBar.Margin = new System.Windows.Forms.Padding(2);
+            this.playerHealthBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.playerHealthBar.Name = "playerHealthBar";
             this.playerHealthBar.Size = new System.Drawing.Size(295, 19);
             this.playerHealthBar.TabIndex = 9;
@@ -260,7 +263,7 @@
             this.monsterHealthBar.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.monsterHealthBar.ForeColor = System.Drawing.Color.Crimson;
             this.monsterHealthBar.Location = new System.Drawing.Point(126, 64);
-            this.monsterHealthBar.Margin = new System.Windows.Forms.Padding(2);
+            this.monsterHealthBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.monsterHealthBar.Name = "monsterHealthBar";
             this.monsterHealthBar.Size = new System.Drawing.Size(184, 20);
             this.monsterHealthBar.TabIndex = 8;
@@ -285,7 +288,7 @@
             this.menuPanel.Controls.Add(this.userNameInput);
             this.menuPanel.Controls.Add(this.titleLabel);
             this.menuPanel.Location = new System.Drawing.Point(-6, 0);
-            this.menuPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(414, 576);
             this.menuPanel.TabIndex = 8;
@@ -406,7 +409,7 @@
             this.difficultyImage.BackColor = System.Drawing.Color.Transparent;
             this.difficultyImage.Image = global::DungeonDelver.Properties.Resources.Slimev1;
             this.difficultyImage.Location = new System.Drawing.Point(148, 466);
-            this.difficultyImage.Margin = new System.Windows.Forms.Padding(2);
+            this.difficultyImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.difficultyImage.Name = "difficultyImage";
             this.difficultyImage.Size = new System.Drawing.Size(119, 106);
             this.difficultyImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -424,7 +427,7 @@
             "Hard",
             "Extra Hard"});
             this.difficultySelect.Location = new System.Drawing.Point(118, 286);
-            this.difficultySelect.Margin = new System.Windows.Forms.Padding(2);
+            this.difficultySelect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.difficultySelect.Name = "difficultySelect";
             this.difficultySelect.Size = new System.Drawing.Size(157, 23);
             this.difficultySelect.TabIndex = 8;
@@ -440,7 +443,7 @@
             this.loadGameButton.Font = new System.Drawing.Font("RuneScape UF", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loadGameButton.ForeColor = System.Drawing.Color.Gold;
             this.loadGameButton.Location = new System.Drawing.Point(118, 415);
-            this.loadGameButton.Margin = new System.Windows.Forms.Padding(2);
+            this.loadGameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loadGameButton.Name = "loadGameButton";
             this.loadGameButton.Size = new System.Drawing.Size(159, 47);
             this.loadGameButton.TabIndex = 7;
@@ -455,7 +458,7 @@
             this.savedGamesList.Enabled = false;
             this.savedGamesList.FormattingEnabled = true;
             this.savedGamesList.Location = new System.Drawing.Point(118, 388);
-            this.savedGamesList.Margin = new System.Windows.Forms.Padding(2);
+            this.savedGamesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.savedGamesList.Name = "savedGamesList";
             this.savedGamesList.Size = new System.Drawing.Size(157, 23);
             this.savedGamesList.TabIndex = 6;
@@ -470,7 +473,7 @@
             this.newGameButton.Font = new System.Drawing.Font("RuneScape UF", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.newGameButton.ForeColor = System.Drawing.Color.Gold;
             this.newGameButton.Location = new System.Drawing.Point(118, 415);
-            this.newGameButton.Margin = new System.Windows.Forms.Padding(2);
+            this.newGameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.newGameButton.Name = "newGameButton";
             this.newGameButton.Size = new System.Drawing.Size(159, 47);
             this.newGameButton.TabIndex = 5;
@@ -484,7 +487,7 @@
             this.userNameInput.Enabled = false;
             this.userNameInput.Font = new System.Drawing.Font("RuneScape UF", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.userNameInput.Location = new System.Drawing.Point(118, 388);
-            this.userNameInput.Margin = new System.Windows.Forms.Padding(2);
+            this.userNameInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.userNameInput.Name = "userNameInput";
             this.userNameInput.Size = new System.Drawing.Size(157, 22);
             this.userNameInput.TabIndex = 4;
@@ -506,22 +509,56 @@
             // 
             // resultsPanel
             // 
-            this.resultsPanel.Controls.Add(this.richTextBox1);
+            this.resultsPanel.Controls.Add(this.highScoresBox);
+            this.resultsPanel.Controls.Add(this.mainMenuButton);
+            this.resultsPanel.Controls.Add(this.replayButton);
+            this.resultsPanel.Controls.Add(this.resultsTextbox);
             this.resultsPanel.Controls.Add(this.label1);
             this.resultsPanel.Location = new System.Drawing.Point(0, 0);
             this.resultsPanel.Name = "resultsPanel";
             this.resultsPanel.Size = new System.Drawing.Size(408, 578);
             this.resultsPanel.TabIndex = 12;
             // 
-            // richTextBox1
+            // highScoresBox
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("RuneScape UF", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(35, 64);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(332, 349);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "Room 1 ......................................................................1500" +
+            this.highScoresBox.Font = new System.Drawing.Font("RuneScape UF", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.highScoresBox.Location = new System.Drawing.Point(29, 64);
+            this.highScoresBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.highScoresBox.Name = "highScoresBox";
+            this.highScoresBox.Size = new System.Drawing.Size(332, 349);
+            this.highScoresBox.TabIndex = 4;
+            this.highScoresBox.Text = "Room 1 ......................................................................1500" +
+    "";
+            // 
+            // mainMenuButton
+            // 
+            this.mainMenuButton.Location = new System.Drawing.Point(155, 466);
+            this.mainMenuButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mainMenuButton.Name = "mainMenuButton";
+            this.mainMenuButton.Size = new System.Drawing.Size(78, 20);
+            this.mainMenuButton.TabIndex = 3;
+            this.mainMenuButton.Text = "Main Menu";
+            this.mainMenuButton.UseVisualStyleBackColor = true;
+            // 
+            // replayButton
+            // 
+            this.replayButton.Location = new System.Drawing.Point(155, 437);
+            this.replayButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.replayButton.Name = "replayButton";
+            this.replayButton.Size = new System.Drawing.Size(78, 20);
+            this.replayButton.TabIndex = 2;
+            this.replayButton.Text = "Continue";
+            this.replayButton.UseVisualStyleBackColor = true;
+            // 
+            // resultsTextbox
+            // 
+            this.resultsTextbox.Font = new System.Drawing.Font("RuneScape UF", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.resultsTextbox.Location = new System.Drawing.Point(29, 64);
+            this.resultsTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resultsTextbox.Name = "resultsTextbox";
+            this.resultsTextbox.Size = new System.Drawing.Size(332, 349);
+            this.resultsTextbox.TabIndex = 1;
+            this.resultsTextbox.Text = "Room 1 ......................................................................1500" +
     "";
             // 
             // label1
@@ -534,17 +571,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Results";
             // 
-            // Form1
+            // DungeonView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 570);
-            this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.gamePanel);
             this.Controls.Add(this.resultsPanel);
+            this.Controls.Add(this.menuPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "DungeonView";
             this.Text = "Dungeoneer";
             ((System.ComponentModel.ISupportInitialize)(this.backgroundImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageDisplay)).EndInit();
@@ -593,7 +630,10 @@
         private Button newChoiceButton;
         private Label newGameLabel;
         private Button backButton;
-        private RichTextBox richTextBox1;
+        private RichTextBox resultsTextbox;
         private Label label1;
+        private Button mainMenuButton;
+        private Button replayButton;
+        private RichTextBox highScoresBox;
     }
 }

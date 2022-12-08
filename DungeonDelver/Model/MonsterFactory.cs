@@ -12,9 +12,7 @@ namespace DungeonDelver.Model
     /*
      * Create more normal monsters
      * Create more hard monsters
-     * Create more extra hard monsters
      * 
-     * ^^ Once each difficulty of monsters is made, then switch the corresponding 
      */
 
     internal class MonsterFactory
@@ -31,7 +29,7 @@ namespace DungeonDelver.Model
                     break;
                 case 1: // NORMAL DIFFICULTY
                     //m = GenerateNormalMonster(monster_val);
-                    m = GenerateEasyMonster(monster_val);
+                    m = GenerateNormalMonster(monster_val);
                     break;
                 case 2: // Hard Difficulty
                     // m = GenerateHardMonster(monster_val);
@@ -79,7 +77,6 @@ namespace DungeonDelver.Model
         }
 
 
-        /*
         private Monster GenerateNormalMonster(int val)
         {
             Monster m;
@@ -87,15 +84,27 @@ namespace DungeonDelver.Model
             // NOTE: Also tweak monster's health & damage values to normal difficulty settings
 
             // Normal monster pool
-            // COMMON:
-            // UNCOMMON:
+            // COMMON:Frebble
+            // UNCOMMON: Bonebilly
             // RARE: 
             switch(val)
             {
-
+                case <= 500:
+                    m = new Frebble();
+                    break;
+                case > 500 and <= 890:
+                    m = new Bonebilly(); // Replace this with the skeleton
+                    break;
+                case > 890:
+                    m = new Squiffer(); // Replace this with the Troll Manager
+                    break;
+                default:
+                    m = new Slime();
             }
+            return m;
         }
 
+        /*
         private Monster GenerateHardMonster(int val)
         {
 

@@ -21,7 +21,6 @@ C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\bin\Debug\net6.0-win
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\bin\Debug\net6.0-windows\DungeonDelver.dll
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\bin\Debug\net6.0-windows\DungeonDelver.pdb
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.csproj.AssemblyReference.cache
-C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.Form1.resources
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.Properties.Resources.resources
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.csproj.GenerateResource.cache
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.GeneratedMSBuildEditorConfig.editorconfig
@@ -34,3 +33,4 @@ C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-win
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.genruntimeconfig.cache
 C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\ref\DungeonDelver.dll
 C:\Users\etan3\OneDrive\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.View.DungeonView.resources
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.View.DungeonView.resources

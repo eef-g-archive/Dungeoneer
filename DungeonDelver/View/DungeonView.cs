@@ -139,11 +139,11 @@ namespace DungeonDelver.View
                     difficultyImage.Image = Properties.Resources.Slimev1;
                     break;
                 case "Medium":
-                    ChangeDifficulty(0);
+                    ChangeDifficulty(1);
                     difficultyImage.Image = Properties.Resources.Frebblev1;
                     break;
                 case "Hard":
-                    ChangeDifficulty(0);
+                    ChangeDifficulty(2);
                     difficultyImage.Image = Properties.Resources.Squifferv1;
                     break;
                 case "Extra Hard":

@@ -253,6 +253,26 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Skeletonv1 {
+            get {
+                object obj = ResourceManager.GetObject("Skeletonv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Skeletonv1_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Skeletonv1_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Slime_hurt {
             get {
                 object obj = ResourceManager.GetObject("Slime_hurt", resourceCulture);
