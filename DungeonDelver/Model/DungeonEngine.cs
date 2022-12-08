@@ -13,16 +13,6 @@ using System.Threading.Tasks;
 using DungeonDelver.Model.Base;
 
 
-///////////////
-//  TODO     //
-///////////////
-/*
- * 
- * 
- * 
- * 
- * 
- */
 namespace DungeonDelver.Model
 {
     internal class DungeonEngine
@@ -70,9 +60,9 @@ namespace DungeonDelver.Model
             rooms.Clear();
             dungeonLength = len;
             MonsterFactory monster_fact = new MonsterFactory();
-            for(int i = 1; i <= len * 2; i++)
+            monster_fact.CreateMonsterPool();
+            for(int i = 1; i <= len; i++)
             {
-                // Need to add a buffer room between each room to give player 1 turn to heal or block.
 
                 Monster monster = monster_fact.GenerateRandomMonster(dungeonDifficulty);
                 Room room = new Room(i, monster, 15);
