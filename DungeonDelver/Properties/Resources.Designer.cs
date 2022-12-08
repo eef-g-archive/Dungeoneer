@@ -183,6 +183,26 @@ namespace DungeonDelver.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Managerv1 {
+            get {
+                object obj = ResourceManager.GetObject("Managerv1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Managerv1_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Managerv1_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Meepv1 {
             get {
                 object obj = ResourceManager.GetObject("Meepv1", resourceCulture);
@@ -306,6 +326,26 @@ namespace DungeonDelver.Properties {
         internal static System.Drawing.Bitmap Slimev1 {
             get {
                 object obj = ResourceManager.GetObject("Slimev1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sneezle_hurt {
+            get {
+                object obj = ResourceManager.GetObject("Sneezle_hurt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sneezlev1 {
+            get {
+                object obj = ResourceManager.GetObject("Sneezlev1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

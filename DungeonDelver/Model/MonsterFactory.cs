@@ -10,9 +10,8 @@ namespace DungeonDelver.Model
 {
     // TODO:
     /*
-     * Create more normal monsters
      * Create more hard monsters
-     * 
+     * Create extra hard monster
      */
 
     internal class MonsterFactory
@@ -33,7 +32,7 @@ namespace DungeonDelver.Model
                     break;
                 case 2: // Hard Difficulty
                     // m = GenerateHardMonster(monster_val);
-                    m = GenerateEasyMonster(monster_val);
+                    m = GenerateHardMonster(monster_val);
                     break;
                 case 3: // VERY HARD DIFFICULTY
                     //m = GenerateExtraHardMonster(monster_val);
@@ -96,7 +95,7 @@ namespace DungeonDelver.Model
                     m = new Bonebilly(); // Replace this with the skeleton
                     break;
                 case > 890:
-                    m = new Squiffer(); // Replace this with the Troll Manager
+                    m = new MiddleManager(); // Replace this with the Troll Manager
                     break;
                 default:
                     m = new Slime();
@@ -104,12 +103,33 @@ namespace DungeonDelver.Model
             return m;
         }
 
-        /*
+
         private Monster GenerateHardMonster(int val)
         {
+            Monster m;
+            // Use switch case to run with values of monsters in the normal monsters pool.
+            // NOTE: Also tweak monster's health & damage values to normal difficulty settings
 
+            // Normal monster pool
+            // COMMON: Squiffer
+            // UNCOMMON: Sneezle
+            // RARE: ??
+            switch (val)
+            {
+                case <= 500:
+                    m = new Squiffer();
+                    break;
+                case > 500 and <= 890:
+                    m = new Sneezle(); 
+                    break;
+                case > 890:
+                    m = new MiddleManager(); // Replace this with other monster
+                    break;
+                default:
+                    m = new Slime();
+            }
+            return m;
         }
-*/
 
         private Monster GenerateExtraHardMonster(int val)
         {
@@ -125,7 +145,7 @@ namespace DungeonDelver.Model
                     m = new Pinchington();
                     break;
                 case > 500 and <= 890:
-                    m = new Frebble();
+                    m = new Frebble(); // Switch this out for other monster
                     break;
                 case > 890:
                     m = new Meep();
