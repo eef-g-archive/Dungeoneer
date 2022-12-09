@@ -18,8 +18,8 @@ namespace DungeonDelver
         public Meep()
         {
             name = "Meep";
-            _health = 75;
-            _damage = 30;
+            _health = 30;
+            _damage = 10;
             defaultPortrait = new Bitmap(Properties.Resources.Meepv1);
             hurtPortrait = new Bitmap(Properties.Resources.Meepv1_hurt);
             xp_value = 25;

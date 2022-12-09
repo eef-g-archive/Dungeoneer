@@ -20,6 +20,7 @@ namespace DungeonDelver.Model
         // Set up all the public variables that will be accessible by the Form1 class.
         public LinkedList<Room> rooms;
         public int earnedXP = 0;
+        public int roundScore = 0;
         public int current_room = 0;
         public Bitmap monsterImage;
         public string outputText = "";
@@ -30,6 +31,8 @@ namespace DungeonDelver.Model
         public Player player;
         protected Monster currentEnemy;
         public int dungeonLength;
+        private int enemyMaxHealth;
+        private List<int> roomScores = new List<int>();
 
         // When the engine is created, make sure you initialize the actual dungeon itself as well as the player.
         public DungeonEngine()
@@ -57,6 +60,8 @@ namespace DungeonDelver.Model
          */
         public void GenerateDungeon(int len)
         {
+            roomScores.Clear();
+            roundScore = 0;
             rooms.Clear();
             dungeonLength = len;
             MonsterFactory monster_fact = new MonsterFactory();
@@ -90,6 +95,7 @@ namespace DungeonDelver.Model
             {
                 EnterRoom();
                 monsterImage = currentEnemy.defaultPortrait;
+                enemyMaxHealth = currentEnemy.Health;
             }
             else
             {
@@ -135,6 +141,7 @@ namespace DungeonDelver.Model
         {
             TextOut("==========================================\n");
             TextOut($"| You leveled up!\n");
+            TextOut($"| You're now level {player.level}\n");
             TextOut($"| Your max health is now {player.max_health}.\n");
             TextOut($"| Your max damage is now {player.Damage}.\n");
             TextOut("==========================================");
@@ -167,21 +174,34 @@ namespace DungeonDelver.Model
 
                 if (currentEnemy.Health <= 0)
                 {
+                    int roomScore = 100 - (player.max_health - player.Health) + enemyMaxHealth;
+
                     current_room++;
                     ImageOut(null);
-                    player.xp_gained += currentEnemy.xp_value;
+
+                    player.curr_xp += currentEnemy.xp_value;
+                    player.overall_xp += currentEnemy.xp_value;
+                    earnedXP += currentEnemy.xp_value;
+                    roomScores.Add(roomScore);
+                    roundScore += roomScore;                   
+
                     TextOut("");
                     RoomResults();
                     wait(2000);
                     TextOut("");
-                    int x = player.xp_gained / 15;
-                    if(player.xp_gained / 15 > player._level) 
-                    { 
+
+
+                    try
+                    {
                         player.LevelUp();
                         PlayerMaxBar(player.max_health);
                         LevelUpResults();
                         wait(2000);
                         TextOut("");
+                    }
+                    catch(Exception ex)
+                    {
+                        // Don't do anything
                     }
                     NextRoom();
                 }
@@ -209,6 +229,7 @@ namespace DungeonDelver.Model
             else { TextOut("> You already finished the dungeon. Go home!\n");  }
         }
 
+        
         private void PlayerTurn(string action)
         {
             switch(action)
@@ -222,7 +243,6 @@ namespace DungeonDelver.Model
                     TextOut("> You raise your shield to block.\n");
                     break;
                 case "HEAL":
-                    player.Heal();
                     outputText = player.Heal();
                     PlayerUpdate(player.Health);
                     TextOut(outputText + "\n");

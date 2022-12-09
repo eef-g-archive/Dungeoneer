@@ -43,7 +43,12 @@ internal class CustomEventHandler
 
     private void SaveGame()
     {
-        string[] lines = { $"{engine.player.name}", $"{engine.player.dungeons_completed}", $"{engine.player.dungeons_attempted}", $"{engine.player.xp_gained}" };
+        string[] lines =
+        {
+            $"{engine.player.name}", $"{engine.player.dungeons_completed}", $"{engine.player.dungeons_attempted}",
+            $"{engine.player.overall_xp}", $"{engine.player.curr_xp}", $"{engine.player.level}",
+            $"{engine.player.max_health}", $"{engine.player.healPower}", $"{engine.player.Damage}"
+        };
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         docPath += "\\DungeonDelver\\";
 
@@ -196,10 +201,26 @@ internal class CustomEventHandler
              * name
              * dungeons_completed
              * dungeons_attempted
-             * xp_gained
+             * overall_xp
+             * curr_xp
+             * level
+             * max_health
+             * healPower
+             * damage
              */
+            int[] stats =
+            {
+                Convert.ToInt32(lines.ElementAt(1)),
+                Convert.ToInt32(lines.ElementAt(2)),
+                Convert.ToInt32(lines.ElementAt(3)),
+                Convert.ToInt32(lines.ElementAt(4)),
+                Convert.ToInt32(lines.ElementAt(5)),
+                Convert.ToInt32(lines.ElementAt(6)),
+                Convert.ToInt32(lines.ElementAt(7)),
+                Convert.ToInt32(lines.ElementAt(8))
+            };
 
-            engine.player.LoadStats(lines.ElementAt(0), Convert.ToInt32(lines.ElementAt(1)), Convert.ToInt32(lines.ElementAt(2)), Convert.ToInt32(lines.ElementAt(3)));
+            engine.player.LoadStats(lines.ElementAt(0), stats);
             BeginGame();
         }
         catch (Exception ex)

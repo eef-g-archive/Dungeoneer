@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DungeonDelver.Model.Monsters;
 using DungeonDelver.Model.Base;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
-using System.Security.Cryptography;
 
 namespace DungeonDelver.Model
 {

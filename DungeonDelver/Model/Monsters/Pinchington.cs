@@ -18,8 +18,8 @@ namespace DungeonDelver
         public Pinchington()
         {
             name = "Pinchington";
-            _health = 100;
-            _damage = 20;
+            _health = 40;
+            _damage = 15;
             defaultPortrait = new Bitmap(Properties.Resources.Pinchingtonv1);
             hurtPortrait = new Bitmap(Properties.Resources.Pinchingtonv1_hurt);
             xp_value = 25;

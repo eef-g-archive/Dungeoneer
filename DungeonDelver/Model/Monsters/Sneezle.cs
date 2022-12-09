@@ -18,8 +18,8 @@ namespace DungeonDelver.Model.Monsters
         public Sneezle()
         {
             name = "Sneezle";
-            _health = 100;
-            _damage = 20;
+            _health = 40;
+            _damage = 15;
             defaultPortrait = new Bitmap(Properties.Resources.Sneezlev1);
             hurtPortrait = new Bitmap(Properties.Resources.Sneezle_hurt);
             xp_value = 25;

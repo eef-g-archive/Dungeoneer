@@ -18,8 +18,8 @@ namespace DungeonDelver
         public Squiffer()
         {
             name = "Squiffer";
-            _health = 50;
-            _damage = 50;
+            _health = 30;
+            _damage = 10;
             defaultPortrait = new Bitmap(Properties.Resources.Squifferv1);
             hurtPortrait = new Bitmap(Properties.Resources.Squiffer_hurt);
             xp_value = 25;

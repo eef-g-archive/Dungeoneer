@@ -18,8 +18,8 @@ namespace DungeonDelver.Model.Monsters
         public Frebble()
         {
             name = "Frebble";
-            _health = 50;
-            _damage = 15;
+            _health = 20;
+            _damage = 5;
             defaultPortrait = new Bitmap(Properties.Resources.Frebblev1);
             hurtPortrait = new Bitmap(Properties.Resources.Frebblev1_hurt);
             xp_value = 25;

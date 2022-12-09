@@ -18,8 +18,8 @@ namespace DungeonDelver.Model.Monsters
         public MiddleManager()
         {
             name = "Middle Manager";
-            _health = 175;
-            _damage = 20;
+            _health = 40;
+            _damage = 15;
             defaultPortrait = new Bitmap(Properties.Resources.Managerv1);
             hurtPortrait = new Bitmap(Properties.Resources.Managerv1_hurt);
             xp_value = 25;
