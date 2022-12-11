@@ -21,6 +21,8 @@ namespace DungeonDelver.View
     {
         public string outputText;
         public string userName;
+        private int playerScore = 0;
+        private string updateScore = "";
 
         public DungeonView()
         {
@@ -28,6 +30,7 @@ namespace DungeonDelver.View
             InitializeComponent();
             statusText.Text = "";
             statusText.TextChanged += statusText_TextChanged;
+            highScoresBox.TextChanged += statusText_TextChanged;
             backgroundImage.SizeMode = PictureBoxSizeMode.StretchImage;
             imageDisplay.BackgroundImageLayout = ImageLayout.Stretch;
 
@@ -41,7 +44,8 @@ namespace DungeonDelver.View
         public event Action<string> NewGame;
         public event Action<string> LoadGame;
         public event Action<int> ChangeDifficulty;
-
+        public event Action<string> NewLine;
+        public event Action<List<string>> UpdateScores;
 
         /*******************\
         |*   Form Inputs   *|
@@ -180,6 +184,19 @@ namespace DungeonDelver.View
         }
         #endregion
 
+
+        // *** RESULTS PANEL INPUT HANDLING *** \\
+        #region Results Panel
+
+        private void mainMenuButton_Click(object sender, EventArgs e)
+        {
+            playerScore = 0;
+            ShowMenu();
+        }
+
+
+        #endregion
+
         #endregion
 
 
@@ -202,6 +219,7 @@ namespace DungeonDelver.View
             gamePanel.Enabled = true;
             gamePanel.BringToFront();
             menuPanel.Enabled = false;
+            resultsPanel.Enabled = false;
         }
 
         public void ShowMenu()
@@ -213,7 +231,16 @@ namespace DungeonDelver.View
             menuPanel.BringToFront();
             statusText.Text = "";
             gamePanel.Enabled = false;
+            resultsPanel.Enabled = false;
             difficultySelect.SelectedIndex = 0;
+        }
+
+        public void ShowResults()
+        {
+            menuPanel.Enabled = false;
+            gamePanel.Enabled = false;
+            resultsPanel.BringToFront();
+            resultsPanel.Enabled = true;
         }
 
         public void ToggleMenu()
@@ -243,6 +270,95 @@ namespace DungeonDelver.View
             backButton.Enabled = false;
             backButton.Visible = false;
         }
+
+        public void DisplayResult(int room, int roomScore)
+        {
+            if (roomScore == -1)
+            {
+                highScoresBox.Text += $"Room {room}\n...............................................DIED\n\n";
+                playerScore = 0;
+            }
+            else if (roomScore == -2)
+            {
+                highScoresBox.Text += $"Room {room}\n...............................................FLED\n\n";
+                playerScore = 0;
+            }
+            else
+            {
+                highScoresBox.Text += $"Room {room}\n...............................................{roomScore}\n\n";
+                playerScore += roomScore;
+            }
+        }
+
+        private int CalculateHighScores(List<int> highScores)
+        {
+            int replaceIndex = -1;
+            int[] scores = highScores.ToArray();
+            for(int i = scores.Length - 1; i > 0; i--)
+            {
+                if(playerScore > scores[i])
+                {
+                    replaceIndex = i;
+                }    
+            }
+            return replaceIndex;
+        }
+
+        public void DisplayHighScores()
+        {
+            List<string> lines = new List<string>();
+            List<int> scores = new List<int>();
+            string fileName = "Scores.delve";
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            docPath += "\\DungeonDelver\\Scores\\";
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(Path.Combine(docPath, fileName)))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        lines.Add(reader.ReadLine());
+                    }
+                }
+
+                foreach(string line in lines)
+                {
+                    int scoreBeginningIndex = line.IndexOf(":");
+                    string scoreString = line.Substring(scoreBeginningIndex+1, line.Length - scoreBeginningIndex - 1);
+                    int x = 0;
+                    int score = Convert.ToInt32(scoreString);
+                    scores.Add(score);
+                }
+
+                int replaceIndex = CalculateHighScores(scores);
+                if(replaceIndex != -1)
+                {
+                    lines.RemoveAt(replaceIndex);
+                    NewLine(playerScore.ToString());
+                    lines.Insert(replaceIndex, updateScore);
+                }
+
+
+                highScoresBox.Clear();
+                highScoresBox.SelectedText = "Highscores";
+                highScoresBox.SelectionAlignment = HorizontalAlignment.Center;
+
+                highScoresBox.SelectionAlignment = HorizontalAlignment.Left;
+                foreach(string line in lines)
+                {
+                    highScoresBox.Text += "\n";
+                    highScoresBox.Text += line;
+                }
+
+                UpdateScores(lines);
+            }
+            catch(Exception ex)
+            {
+                return;
+            }
+        }
+
 
         #endregion
 
@@ -393,8 +509,27 @@ namespace DungeonDelver.View
             set { playerBlockingIcon.Visible = value; }
         }
 
+        public string Results
+        {
+            get { return highScoresBox.Text; }
+            set
+            {
+                if (value == "")
+                {
+                    highScoresBox.Text = "";
+                }
+                else
+                {
+                    highScoresBox.Text += value;
+                }
+            }
+        }
 
-
+        public string NewString
+        {
+            get { return "Hello world"; }
+            set { updateScore = value; }
+        }
 
         #endregion
 

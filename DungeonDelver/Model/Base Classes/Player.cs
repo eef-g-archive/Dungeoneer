@@ -20,9 +20,6 @@ namespace DungeonDelver.Model.Base
 
         public int max_health = 20;
 
-        private int hardcap_health = 99;
-        private int hardcap_damage = 99;
-        private int hardcap_heal = 25;
         private int xp_to_next = 0;
 
         public int Damage { get { return _damage; } }
@@ -64,7 +61,7 @@ namespace DungeonDelver.Model.Base
 
         private void UpdateXPRequirement()
         {
-            xp_to_next = ( (level * 15) + (level % 10) );
+            xp_to_next = ( (level * 15) + (xp_to_next / 3) );
         }
 
         public void LevelUp()

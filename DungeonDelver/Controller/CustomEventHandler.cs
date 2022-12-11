@@ -24,6 +24,8 @@ internal class CustomEventHandler
         app.NewGame += new Action<string>(BeginNewGame);
         app.LoadGame += new Action<string>(LoadOldGame);
         app.ChangeDifficulty += new Action<int>(SwitchDifficulty);
+        app.NewLine += new Action<string>(ScoreInfo);
+        app.UpdateScores += new Action<List<string>>(UpdateScores);
 
 
         engine.TextOut += new Action<string>(TextHandler);
@@ -69,12 +71,6 @@ internal class CustomEventHandler
         List<string> profiles = new List<string>();
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         docPath += "\\DungeonDelver\\";
-
-        if (!System.IO.Directory.Exists(docPath))
-        {
-            DirectoryInfo dirInfo = Directory.CreateDirectory(docPath);
-            dirInfo.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-        }
 
         string[] fileNames = System.IO.Directory.GetFiles(docPath);
 
@@ -127,6 +123,8 @@ internal class CustomEventHandler
             }
         }
     }
+
+
     #endregion
 
 
@@ -179,12 +177,6 @@ internal class CustomEventHandler
         string fileName = playerName + "_save.delve";
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         docPath += "\\DungeonDelver\\";
-
-        if (!System.IO.Directory.Exists(docPath))
-        {
-            DirectoryInfo dirInfo = Directory.CreateDirectory(docPath);
-            dirInfo.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-        }
 
         int index = 0;
         List<string> lines = new List<string>();
@@ -256,7 +248,19 @@ internal class CustomEventHandler
         {
             SaveGame();
         }
-        app.ShowMenu();
+        app.ShowResults();
+        app.Results = "";
+        engine.wait(500);
+
+        int index = 0;
+        foreach (int score in engine.roomScores)
+        {
+            app.DisplayResult(index + 1, score);
+            index++;
+            engine.wait(500);
+        }
+        engine.wait(3000);
+        app.DisplayHighScores();
         UpdateSavedProfileList();
     }
 
@@ -294,6 +298,33 @@ internal class CustomEventHandler
     private void SwitchDifficulty(int difficulty)
     {
         engine.dungeonDifficulty = difficulty;
+    }
+
+    private void ScoreInfo(string playerScore)
+    {
+        app.NewString = $"{engine.player.name}:{playerScore}";
+    }
+
+    private void UpdateScores(List<string> lines)
+    {
+        string fileName = "Scores.delve";
+        string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        docPath += "\\DungeonDelver\\Scores\\";
+
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(Path.Combine(docPath, fileName)))
+            {
+                foreach (string line in lines)
+                {
+                    writer.WriteLine(line);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 
     #endregion

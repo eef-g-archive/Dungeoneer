@@ -81,6 +81,25 @@ namespace DungeonDelver.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Burtis:1136
+        ///Rizzgod:800
+        ///Kirby:793
+        ///Ethan:784
+        ///QA Team:637
+        ///Jeff:556
+        ///Hudson:361
+        ///Owen:239
+        ///Frebble:101
+        ///Bozo:95
+        ///.
+        /// </summary>
+        internal static string Default_Scores {
+            get {
+                return ResourceManager.GetString("Default-Scores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Dungeon_Wall {
@@ -367,6 +386,15 @@ namespace DungeonDelver.Properties {
             get {
                 object obj = ResourceManager.GetObject("Squifferv1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

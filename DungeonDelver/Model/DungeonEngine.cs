@@ -32,7 +32,7 @@ namespace DungeonDelver.Model
         protected Monster currentEnemy;
         public int dungeonLength;
         private int enemyMaxHealth;
-        private List<int> roomScores = new List<int>();
+        public List<int> roomScores = new List<int>();
 
         // When the engine is created, make sure you initialize the actual dungeon itself as well as the player.
         public DungeonEngine()
@@ -216,6 +216,7 @@ namespace DungeonDelver.Model
                 
                 if(player.Health <= 0)
                 {
+                    roomScores.Add(-1);
                     //Game ends
                     GameEnd("Death");
                 }
@@ -249,6 +250,7 @@ namespace DungeonDelver.Model
                     break;
                 case "RUN":
                     current_room = 99999;
+                    roomScores.Add(-2);
                     TextOut("");
                     TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n> You forget all the experience you gained in this dungeon.\n");
                     ImageOut(Properties.Resources.CreatureBackground);
