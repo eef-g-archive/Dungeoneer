@@ -507,6 +507,7 @@
             // 
             // resultsPanel
             // 
+            this.resultsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(130)))), ((int)(((byte)(113)))));
             this.resultsPanel.Controls.Add(this.highScoresBox);
             this.resultsPanel.Controls.Add(this.mainMenuButton);
             this.resultsPanel.Controls.Add(this.label1);
@@ -517,7 +518,10 @@
             // 
             // highScoresBox
             // 
+            this.highScoresBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(111)))), ((int)(((byte)(96)))));
+            this.highScoresBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.highScoresBox.Font = new System.Drawing.Font("RuneScape UF", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.highScoresBox.ForeColor = System.Drawing.Color.Gold;
             this.highScoresBox.Location = new System.Drawing.Point(29, 64);
             this.highScoresBox.Margin = new System.Windows.Forms.Padding(2);
             this.highScoresBox.Name = "highScoresBox";
@@ -529,22 +533,30 @@
             // 
             // mainMenuButton
             // 
-            this.mainMenuButton.Location = new System.Drawing.Point(158, 466);
+            this.mainMenuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(130)))), ((int)(((byte)(113)))));
+            this.mainMenuButton.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.mainMenuButton.FlatAppearance.BorderSize = 2;
+            this.mainMenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainMenuButton.Font = new System.Drawing.Font("RuneScape UF", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mainMenuButton.ForeColor = System.Drawing.Color.Gold;
+            this.mainMenuButton.Location = new System.Drawing.Point(143, 453);
             this.mainMenuButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainMenuButton.Name = "mainMenuButton";
-            this.mainMenuButton.Size = new System.Drawing.Size(78, 20);
+            this.mainMenuButton.Size = new System.Drawing.Size(118, 36);
             this.mainMenuButton.TabIndex = 3;
             this.mainMenuButton.Text = "Main Menu";
-            this.mainMenuButton.UseVisualStyleBackColor = true;
+            this.mainMenuButton.UseVisualStyleBackColor = false;
             this.mainMenuButton.Click += new System.EventHandler(this.mainMenuButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(178, 23);
+            this.label1.Font = new System.Drawing.Font("RuneScape UF", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Gold;
+            this.label1.Location = new System.Drawing.Point(151, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 15);
+            this.label1.Size = new System.Drawing.Size(87, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Results";
             // 

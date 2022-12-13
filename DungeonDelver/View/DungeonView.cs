@@ -199,7 +199,6 @@ namespace DungeonDelver.View
 
         #endregion
 
-
         /*******************************\
          *   General Purpose Methods   *
         \*******************************/
@@ -341,15 +340,18 @@ namespace DungeonDelver.View
 
 
                 highScoresBox.Clear();
-                highScoresBox.SelectedText = "Highscores";
-                highScoresBox.SelectionAlignment = HorizontalAlignment.Center;
+                highScoresBox.Text = "Highscores\n";
+                
 
-                highScoresBox.SelectionAlignment = HorizontalAlignment.Left;
                 foreach(string line in lines)
                 {
                     highScoresBox.Text += "\n";
-                    highScoresBox.Text += line;
+                    int scoreSeparator = line.IndexOf(":");
+                    string scoreLine = $"{line.Substring(0, scoreSeparator)} --- {line.Substring(scoreSeparator+1)}";
+                    highScoresBox.Text += scoreLine;
                 }
+                highScoresBox.SelectAll();
+                highScoresBox.SelectionAlignment = HorizontalAlignment.Center;
 
                 UpdateScores(lines);
             }
