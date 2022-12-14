@@ -1,4 +1,8 @@
-﻿
+﻿// @Author: Ethan Gray
+/* Purpose:
+ * This is the class that contains all of the data and methods that the Player utilizes. Because, well, it is the player class.
+ * This class is used to keep track of player stats, player leveling, and loading the stats from the .DELVE file containing the stats
+ */
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +37,11 @@ namespace DungeonDelver.Model.Base
             UpdateXPRequirement();
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * This function takes in all the information from the controller aspect related to loading stats from the player save file.
+         */
         public void LoadStats(string name, int[] stats)
         {
             this.name = name;
@@ -48,6 +57,13 @@ namespace DungeonDelver.Model.Base
             UpdateXPRequirement();
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Increases the player's health to mimic the concept of healing in RPG games.
+         * Has error checking to ensure that the health doesn't go above their max HP to avoid
+         * and error being thrown by the view aspect.
+         */
         public string Heal()
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());
@@ -59,11 +75,23 @@ namespace DungeonDelver.Model.Base
             return $"You heal yourself for {healVal} hit points!";
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Runs the formula for increasing the XP required to level up the player.
+         * This works to increase the amount of monsters that the player needs to kill to increase their stats as they keep progessing in the game.
+         */
         private void UpdateXPRequirement()
         {
             xp_to_next = ( (level * 15) + (xp_to_next / 3) );
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Increases the player's stats when they pass the XP threshold needed to level up.
+         * After they level up, reset their XP so that way they can begin to gain XP again.
+         */
         public void LevelUp()
         {
             UpdateXPRequirement();

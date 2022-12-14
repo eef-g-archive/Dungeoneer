@@ -1,5 +1,4 @@
 ﻿// @Author: Ethan Gray
-// Last Edited: 10/26/22
 // Purpose:
 /* This is the base class for the player and all monsters in the game.
  * It controls the variables and methods that are shared between the two objects and is used as a starting point.

@@ -1,9 +1,8 @@
 ﻿// @Author: Ethan Gray
-// Last Edited: 11/04/22
 // Purpose:
 /* This is the main logic class for the DungeonDelver game.
  * It controls a lot of the 'behavior' for the game.
- * It also controls the flow of information to the main Form1 class.
+ * It also controls the flow of information to the control class for the model aspect.
  */
 using System;
 using System.Collections.Generic;
@@ -52,8 +51,7 @@ namespace DungeonDelver.Model
 
 
         // @Author: Ethan Gray
-        // Last Edited - 11/04/22
-        // @Purpose: 
+        // Purpose: 
         /* Utilizes the MonsterFactory to randomly choose what enemies are in what rooms of the dungeon.
          * Adds to the overall list of the dungeon rooms so that way when the dungeon is made, the player can have something to explore.
          * Takes in the argument "len" so that way later we can have some sort of setting to choose how long the dungeon is to increase difficulty.
@@ -78,8 +76,7 @@ namespace DungeonDelver.Model
 
 
         // @Author: Ethan Gray
-        // Last Edited - 11/04/22
-        // @Purpose:
+        // Purpose:
         /* First checks if the dungeon is completed or not.
          * Afterwards, begins the initialization of the next room.
          * When the room is initialized, it updates the engine's public variables to allow the Form1 class to access the following:
@@ -112,8 +109,7 @@ namespace DungeonDelver.Model
         
 
         // @Author: Ethan Gray
-        // Last Edited - 11/05/22
-        // @Purpose:
+        // Purpose:
         /* Controls the logic when the player enters a new room.
          * Ensures it is the player's turn to go when prompted.
          */
@@ -128,6 +124,11 @@ namespace DungeonDelver.Model
         }
 
 
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Uses the custom event TextOut() to send a splash text to the control aspect to be used by the view aspect.
+         * Serves as a way of showing the player data about the room they just completed.
+         */
         private void RoomResults()
         {
             TextOut("==========================================\n");
@@ -137,21 +138,35 @@ namespace DungeonDelver.Model
             TextOut("==========================================");
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Similar to RoomResults(), however it creates a splash text whenever the player levels up and shows the new stats.
+         */
         private void LevelUpResults()
         {
             TextOut("==========================================\n");
-            TextOut($"| You leveled up!\n");
-            TextOut($"| You're now level {player.level}\n");
+            TextOut($"| You leveled up to level {player.level}\n");
             TextOut($"| Your max health is now {player.max_health}.\n");
             TextOut($"| Your max damage is now {player.Damage}.\n");
             TextOut("==========================================");
         }
 
         // @Author: Ethan Gray
-        // Created - 11/15/22
-        // @Purpose:
-        /*
-         * 
+        // Purpose:
+        /*This is the main logic used for each turn in a game.
+         * It takes a string argument passed to it from the control aspect and runs the logic for each different type of turn.
+         * It will ONLY go through this turn logic if the player is still within one of the available rooms. If not, then it tells them to go home.
+         * The structure of a game turn is as follows:
+         *  - The player selects their move on the UI
+         *  - The view aspect sends a custom argument to the control aspect
+         *  - The control aspect figures out what type of input was sent and then calls the GameTurn() function with the argument
+         *    related to the type of action the player chose
+         *  - The engine runs the PlayerTurn() function which runs logic for each different action that can be called
+         *  - After the action is completed, different logic checks for what can happen are run in GameTurn()
+         *      - Such logic checks are if the player was hurt, if the enemy died, if the player died, or if the player fled the dungeon
+         *  - After the player's choice is dealt with, the enemy begins their turn and runs through their own logic.
+         *      - ATM, monsters only continuously attack because A) I'm lazy and can't code a basic behavior for them and B) See reason A.
          */
         public void GameTurn(string playerAction)
         {
@@ -230,7 +245,12 @@ namespace DungeonDelver.Model
             else { TextOut("> You already finished the dungeon. Go home!\n");  }
         }
 
-        
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Takes the action that the player selected and sends the outputs to the view aspect as well updates the player or current monster
+         * objects depending on the action.
+         */
         private void PlayerTurn(string action)
         {
             switch(action)
@@ -260,16 +280,28 @@ namespace DungeonDelver.Model
             }
         }
 
+
+        // @Author: Ethan Gray
+        /* Purpose:
+         * Runs the monster logic, which is very minimal because I got lazy and wanted them to brainlessly attack.
+         */
         private void MonsterTurn()
         {
             outputText = currentEnemy.Attack(currentEnemy, player);
             TextOut(outputText + "\n");
         }
-        
+
 
 
         // This was taken from Stack Overflow
         // Credit: Oringinally written by Said on Oct. 20, 2018. Edited by AustinWBryan on Jun. 29, 2020
+        // @Authors: Said & AustinWBryan
+        /* Purpose:
+         * Works as a way of stopping the program without having to use Thread.Sleep().
+         * This allows for the project to be usable even while a task is waiting.
+         * This function is a core pillar of actually having the project work and having elements update
+         * dynamicall instead of everything updating at once after a function is done.
+         */
         public void wait(int milliseconds)
         {
             var timer1 = new System.Windows.Forms.Timer();
@@ -284,7 +316,6 @@ namespace DungeonDelver.Model
             {
                 timer1.Enabled = false;
                 timer1.Stop();
-                // Console.WriteLine("stop wait timer");
             };
 
             while (timer1.Enabled)

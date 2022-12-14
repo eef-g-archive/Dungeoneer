@@ -1,4 +1,10 @@
-﻿using System;
+﻿// @Author: Ethan Gray
+/* Purpose:
+ * This is the Custom Event Handler that the controller aspect makes use of.
+ * It is a collection of all the functions that are run whenever the custom events in the model and view aspects are triggered.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +49,11 @@ internal class CustomEventHandler
     \*******************************/
     #region ControllerFunctions
 
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the informaton from the player that was used in the current game.
+     * Stores that information on a .DELVE file on the computer to be read later with the game being loaded.
+     */
     private void SaveGame()
     {
         string[] lines =
@@ -66,6 +77,12 @@ internal class CustomEventHandler
         }
     }
 
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Goes to the folder that contains all of the saved game files and grabs the profile names for each file.
+     * Returns a List<string> of the profile names it finds.
+     * NOTE: It does not check if the file is correctly saved, it only checks for profile names.
+     */
     private List<string> GetSavedProfiles()
     {
         List<string> profiles = new List<string>();
@@ -88,6 +105,11 @@ internal class CustomEventHandler
         return profiles;
     }
 
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Goes through all of the profile names that GetSavedProfiles is able to find.
+     * Those names are then send to the view aspect to update the profile select comboBox.
+     */
     public void UpdateSavedProfileList()
     {
         app.ProfileList = "";
@@ -98,6 +120,10 @@ internal class CustomEventHandler
         }
     }
 
+    // @Author: Ethan Gray
+    /* Purpose:
+     * This method sets up the entire game as well as updates the UI to let the player see & play the game.
+     */
     private void BeginGame()
     {
         engine.GenerateDungeon(app.GameDifficulty);
@@ -107,6 +133,12 @@ internal class CustomEventHandler
         Console.WriteLine(app.PlayerMax);
     }
 
+    // @Author: Ethan Gray
+    /* Purpose:
+     * This method is run if the player loses the game. The concept of the game is that you're an adventurer with only 1 life,
+     * so if the player dies, then their save file is deleted and they cannot play as that character ever again.
+     * It works by using the current player's name, locates the savefile for that player and deletes the file.
+     */
     private void DeleteGame(string playerName)
     {
         string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -132,6 +164,11 @@ internal class CustomEventHandler
      *        Custom Events        *
     \*******************************/
     #region EventHandlers
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the player's choice for their turn from the view aspect's input handlers and sends the data to the model aspect.
+     */
     private void PlayerinputHandler(string playerInput)
     {
         app.ToggleInput();
@@ -153,6 +190,12 @@ internal class CustomEventHandler
         app.ToggleInput();
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the player-input name from the view aspect and runs logic to ensure that the name is not an existing profile.
+     * It then spits the information right back to the view aspect and runs the BeginGame() function to start the game.
+     */
     private void BeginNewGame(string playerName)
     {
         List<string> existingPlayers = app.ExistingProfiles;
@@ -171,6 +214,13 @@ internal class CustomEventHandler
         app.NewPlayerName = "";
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * This has a similar purpose to the BeginNewGame() function, however instead of parsing the user-input name,
+     * it will take the name chosen from the comboBox and finds the .DELVE file corresponding to the profile the player selected.
+     * Afterwards, it will then begin the game with the data that is loaded off of the .DELVE file.
+     */
     private void LoadOldGame(string playerName)
     {
         // Load stats from file first by using the playerName variable
@@ -221,16 +271,33 @@ internal class CustomEventHandler
         }
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes text related to the status of the game/turn from the model aspect and sends it to the view aspect.
+     */
     private void TextHandler(string flavorText)
     {
         app.StatusText = flavorText;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes a Bitmap of an image from the model aspect and sends it to the view aspect to display it as the current enemy sprite.
+     */
     private void ImageHandler(Bitmap image)
     {
         app.MonsterImage = image;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes a status string from the model aspect to determine how the game ended.
+     * Depending on the end condition, different logic is run to either update or delete the player file,
+     * show the results of the run, and finally display the overall high scores of the game.
+     */
     private void FinishDungeon(string end)
     {
         if (end == "Death")
@@ -264,16 +331,35 @@ internal class CustomEventHandler
         UpdateSavedProfileList();
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes data from the model aspect about the health stats of the new monster the payer is facing.
+     * It then uses that data and sends it to the view aspect to use as the new maximum value for the statusBar used as a healthbar for the
+     * enemy.
+     */
     private void LoadHealthBar(int max)
     {
         app.MonsterMax = max;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the current health of the monster the player is facing from the model aspect and sends it to the view aspect.
+     * The view aspect will then parse that data and update the monster's health bar on the UI.
+     */
     private void UpdateMonsterHealth(int health)
     {
         app.MonsterHealth = health;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the player's maximum health from the model aspect and sends it to the view aspect.
+     * The view aspect will then use it to set up and initialize the player's health bar at the beginning of the game.
+     */
     private void StartPlayerHealthBar(int max)
     {
         app.PlayerMax = max;
@@ -283,6 +369,12 @@ internal class CustomEventHandler
         app.PlayerHealth = max;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Similar to the purpose of the UpdateMonsterHealth() function, but instead of the monster's data it uses data about the 
+     * player from the model aspect.
+     */
     private void UpdatePlayerBar(int health)
     {
         app.PlayerHealth = health;
@@ -290,21 +382,46 @@ internal class CustomEventHandler
         app.HealthText = player_stats;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the boolean related to the player's state concerning blocking from the model aspect and sends it to the view aspect.
+     * The bool is then parsed by the view aspect to determine whether or not to have the blocking icon visible to the player.
+     */
     private void UpdateBlockingIcon(bool status)
     {
         app.Block = status;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes the difficulty from the difficultySelect comboBox on the menu panel from the view aspect.
+     * It is then sent to the model aspect to be parsed to determine how to create and edit the monsters in the dungeon when the game is started.
+     */
     private void SwitchDifficulty(int difficulty)
     {
         engine.dungeonDifficulty = difficulty;
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes a request from the view aspect to have the model aspect create a line that follows the format of the highscores file.
+     * This line is then sent back to the view model after it has been created to be used in editing the highscore file and displaying
+     * it to the player.
+     */
     private void ScoreInfo(string playerScore)
     {
         app.NewString = $"{engine.player.name}:{playerScore}";
     }
 
+
+    // @Author: Ethan Gray
+    /* Purpose:
+     * Takes a request from the view aspect to save the highscores file. It takes the List<string> of all the highscores.
+     * With that list, the highscores file is then rewritten with the newest set of highscores.
+     */
     private void UpdateScores(List<string> lines)
     {
         string fileName = "Scores.delve";

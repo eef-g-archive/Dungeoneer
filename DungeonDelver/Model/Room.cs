@@ -1,4 +1,10 @@
-﻿using System;
+﻿// @Author: Ethan Gray
+/* Purpose:
+ * This is the base class for the Room object.
+ * The room object is used in the DungeonEngine class as part of a linked list of data for each "Room" of the dungeon.
+ * Think of it as a node in a linked list that is storing a lot of specific data that is able to be accessed by the DungeonEngine class.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

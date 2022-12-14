@@ -1,4 +1,11 @@
-﻿using System;
+﻿// @Author: Ethan Gray
+/* Purpose:
+ * This is the main file for the Controller aspect of the project.
+ * It takes in information from both the engine and view aspects and moves the data between them accordingly.
+ * It makes use of the CustomEventHandler object to parse all of the custom events that are in the engine and view aspects.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +33,12 @@ namespace DungeonDelver.Control
             app.ShowMenu();
         }
 
+        // @Author: Ethan Gray
+        /* Purpose:
+         * This function is run whenever the application is started.
+         * It ensures that the file structure for the storage of high scores and player save files is in place on the machine.
+         * If the structure is in place, then nothing happens. Otherwise, it creates the folders and files and updates their properties accordingly.
+         */
         private void DefaultFileInitialization()
         {
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
