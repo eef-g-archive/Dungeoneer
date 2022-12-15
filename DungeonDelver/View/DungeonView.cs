@@ -23,6 +23,7 @@ namespace DungeonDelver.View
         public string userName;
         private int playerScore = 0;
         private string updateScore = "";
+        PrivateFontCollection pfc = new PrivateFontCollection();
 
         public DungeonView()
         {
@@ -37,6 +38,27 @@ namespace DungeonDelver.View
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             imageDisplay.BackColor = Color.Transparent;
             imageDisplay.Parent = backgroundImage;
+            string executablePath = Application.StartupPath;
+            string fontPath = executablePath + "\\runescape_uf.ttf";
+            int x = 1;
+            try
+            {
+                pfc.AddFontFile(fontPath);
+            }
+            catch (Exception ex)
+            {
+                fontPath = executablePath + "\\DungeonDelver\\bin\\Debug\\net6.0-windows\\runescape_uf.ttf";
+                pfc.AddFontFile(fontPath);
+            }
+
+            try
+            {
+                FontApplication();
+            }
+            catch(Exception ex)
+            {
+                // Do nothing, just use the default fonts
+            }
         }
 
         // Created this custom event that is handled by the Model-Object (DungeonProgram.cs)
@@ -444,6 +466,30 @@ namespace DungeonDelver.View
             {
                 return;
             }
+        }
+
+        private void FontApplication()
+        {
+            playerHPText.Font = new Font(pfc.Families[0], 11, FontStyle.Regular);
+            playerHealthText.Font = new Font(pfc.Families[0], 11, FontStyle.Regular);
+            fightButton.Font = new Font(pfc.Families[0], 14, FontStyle.Regular);
+            blockButton.Font = new Font(pfc.Families[0], 14, FontStyle.Regular);
+            healButton.Font = new Font(pfc.Families[0], 14, FontStyle.Regular);
+            runButton.Font = new Font(pfc.Families[0], 14, FontStyle.Regular);
+            statusText.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            backButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            newGameLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
+            loadChoiceButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            startButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            difficultyLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
+            loadLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
+            loadGameButton.Font = new Font(pfc.Families[0], 11, FontStyle.Regular);
+            newGameButton.Font = new Font(pfc.Families[0], 11, FontStyle.Regular);
+            userNameInput.Font = new Font(pfc.Families[0], 11, FontStyle.Regular);
+            titleLabel.Font = new Font(pfc.Families[0], 48, FontStyle.Regular);
+            highScoresBox.Font = new Font(pfc.Families[0], 14, FontStyle.Regular);
+            mainMenuButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            label1.Font = new Font(pfc.Families[0], 20, FontStyle.Regular);
         }
 
 
