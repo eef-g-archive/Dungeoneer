@@ -480,6 +480,7 @@ namespace DungeonDelver.View
             backButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
             newGameLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
             loadChoiceButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
+            newChoiceButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
             startButton.Font = new Font(pfc.Families[0], 12, FontStyle.Regular);
             difficultyLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
             loadLabel.Font = new Font(pfc.Families[0], 18, FontStyle.Regular);
