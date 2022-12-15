@@ -119,6 +119,8 @@ namespace DungeonDelver.View
             newGameButton.Visible = true;
             backButton.Enabled = true;
             backButton.Visible = true;
+            this.AcceptButton = newGameButton;
+            this.CancelButton = backButton;
         }
 
         private void loadChoiceButton_Click(object sender, EventArgs e)
@@ -136,6 +138,8 @@ namespace DungeonDelver.View
             loadGameButton.Visible = true;
             backButton.Enabled = true;
             backButton.Visible = true;
+            this.AcceptButton = loadGameButton;
+            this.CancelButton = backButton;
         }
 
         private void difficultySelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,6 +172,7 @@ namespace DungeonDelver.View
             newChoiceButton.Visible = true;
             loadChoiceButton.Enabled = true;
             loadChoiceButton.Visible = true;
+            this.AcceptButton = null;
         }
 
         // @Author: Ethan Gray
@@ -246,6 +251,7 @@ namespace DungeonDelver.View
             gamePanel.BringToFront();
             menuPanel.Enabled = false;
             resultsPanel.Enabled = false;
+            this.AcceptButton = startButton;
         }
 
         // @Author: Ethan Gray

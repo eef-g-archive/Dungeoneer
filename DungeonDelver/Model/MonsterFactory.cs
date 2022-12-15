@@ -121,8 +121,8 @@ namespace DungeonDelver.Model
         MonsterType[] commonMonsters =
         {
             MonsterType.Slime,
-            MonsterType.Frebble,
-            MonsterType.Goblin
+            MonsterType.Frebble//,
+            //MonsterType.Goblin
         };
 
         MonsterType[] uncommonMonsters =

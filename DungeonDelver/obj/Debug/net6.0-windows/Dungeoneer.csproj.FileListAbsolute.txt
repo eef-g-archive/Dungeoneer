@@ -1,0 +1,8 @@
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.csproj.AssemblyReference.cache
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.Properties.Resources.resources
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\DungeonDelver.View.DungeonView.resources
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.csproj.GenerateResource.cache
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.AssemblyInfoInputs.cache
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.AssemblyInfo.cs
+C:\Users\Ethan\Documents\GitHub\DungeonDelver\DungeonDelver\obj\Debug\net6.0-windows\Dungeoneer.csproj.CoreCompileInputs.cache
