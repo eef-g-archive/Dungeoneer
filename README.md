@@ -24,7 +24,7 @@
         <hr> 
         <h1 align="center"> Installation </h1>
         <p>
-            To install the project, simply clone the most recent version of the project! Within the .zip file you will want to go ahead and run the shortcut file to play the game. If it is your first time running the game it will create all the needed files for the game to run and you'll be able to play the game as you wish! Happy dungeoning!
+            To install the project, simply navigate to the releases tab, or click [here](https://github.com/eef-g/Dungeoneer/releases) and download the latest release of dungeoneer! Please ensure that you have .NET 6.0 installed to run the project..
         </p>
     </body>
 
