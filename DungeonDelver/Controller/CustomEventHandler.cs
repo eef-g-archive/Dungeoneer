@@ -15,6 +15,10 @@ using DungeonDelver.View;
 namespace DungeonDelver.Control;
 internal class CustomEventHandler
 {
+    /*******************\
+    |*   Constructor   *|
+    \*******************/
+    #region Constructor
     DungeonView app;
     DungeonEngine engine;
 
@@ -43,6 +47,7 @@ internal class CustomEventHandler
         engine.PlayerUpdate += new Action<int>(UpdatePlayerBar);
         engine.PlayerBlockIcon += new Action<bool>(UpdateBlockingIcon);
     }
+    #endregion
 
     /*******************************\
      *          Functions          *
@@ -158,7 +163,6 @@ internal class CustomEventHandler
 
 
     #endregion
-
 
     /*******************************\
      *        Custom Events        *

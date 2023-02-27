@@ -24,8 +24,11 @@ namespace DungeonDelver.Model
      */
 
     internal class MonsterFactory
-    {
+    { 
 
+        /*******************\
+        |*    Generators   *|
+        \*******************/
         #region GenerateMethods
 
         // @Author: Ethan Gray
@@ -99,6 +102,9 @@ namespace DungeonDelver.Model
         }
         #endregion
 
+        /*******************\
+        |* Logic Functions *|
+        \*******************/
         #region RandomMonsterLogic
         // @Author: Ethan Gray
         /* Section Purpose:

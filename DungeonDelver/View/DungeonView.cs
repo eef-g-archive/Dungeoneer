@@ -19,11 +19,17 @@ namespace DungeonDelver.View
 {
     public partial class DungeonView : Form
     {
+
+        /*******************\
+        |*   Constrcutor   *|
+        \*******************/
+        #region Constructor
+
         public string outputText;
         public string userName;
         private int playerScore = 0;
         private string updateScore = "";
-        PrivateFontCollection pfc = new PrivateFontCollection();
+        PrivateFontCollection pfc = new PrivateFontCollection(); // Use this to load the custom font on PCs that don't have it
 
         public DungeonView()
         {
@@ -38,9 +44,11 @@ namespace DungeonDelver.View
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             imageDisplay.BackColor = Color.Transparent;
             imageDisplay.Parent = backgroundImage;
+
+            // This code below here is to initialize the custom font if it isn't installed
+
             string executablePath = Application.StartupPath;
-            string fontPath = executablePath + "\\runescape_uf.ttf";
-            int x = 1;
+            string fontPath = executablePath + "\\game_font.ttf";
             try
             {
                 pfc.AddFontFile(fontPath);
@@ -58,16 +66,19 @@ namespace DungeonDelver.View
             catch(Exception ex)
             {
                 // Do nothing, just use the default fonts
+                // ^^^ This option is gross, yucky, and makes everything look like it's a basic HTML website
             }
         }
 
-        // Created this custom event that is handled by the Model-Object (DungeonProgram.cs)
+        // Created these custom events that are handled by the Model-Object (DungeonProgram.cs)
         public event Action<string> PlayerInput;
         public event Action<string> NewGame;
         public event Action<string> LoadGame;
         public event Action<int> ChangeDifficulty;
         public event Action<string> NewLine;
         public event Action<List<string>> UpdateScores;
+
+        #endregion
 
         /*******************\
         |*   Form Inputs   *|
@@ -273,7 +284,8 @@ namespace DungeonDelver.View
             gamePanel.BringToFront();
             menuPanel.Enabled = false;
             resultsPanel.Enabled = false;
-            this.AcceptButton = startButton;
+            this.AcceptButton = fightButton;
+            this.CancelButton = runButton;
         }
 
         // @Author: Ethan Gray
@@ -304,6 +316,7 @@ namespace DungeonDelver.View
             gamePanel.Enabled = false;
             resultsPanel.BringToFront();
             resultsPanel.Enabled = true;
+            this.AcceptButton = mainMenuButton;
         }
 
         // @Author: Ethan Gray

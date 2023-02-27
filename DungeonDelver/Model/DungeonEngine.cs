@@ -16,6 +16,10 @@ namespace DungeonDelver.Model
 {
     internal class DungeonEngine
     {
+        /*******************\
+        |*   Constructor   *|
+        \*******************/
+        #region Constructor
         // Set up all the public variables that will be accessible by the Form1 class.
         public LinkedList<Room> rooms;
         public int earnedXP = 0;
@@ -49,7 +53,14 @@ namespace DungeonDelver.Model
         public event Action<int> PlayerUpdate;
         public event Action<bool> PlayerBlockIcon;
 
+        #endregion
 
+        /*******************\
+        |*     Functions   *|
+        \*******************/
+        #region Functions
+
+            #region Room Functions
         // @Author: Ethan Gray
         // Purpose: 
         /* Utilizes the MonsterFactory to randomly choose what enemies are in what rooms of the dungeon.
@@ -122,8 +133,9 @@ namespace DungeonDelver.Model
             else { outputText = $"> You come accross an empty chamber. Choose what you do here wisely, there isn't much time.\n"; }
             TextOut(outputText);
         }
+        #endregion
 
-
+            #region Flavor Text Functions
         // @Author: Ethan Gray
         /* Purpose:
          * Uses the custom event TextOut() to send a splash text to the control aspect to be used by the view aspect.
@@ -151,6 +163,10 @@ namespace DungeonDelver.Model
             TextOut($"| Your max damage is now {player.Damage}.\n");
             TextOut("==========================================");
         }
+
+        #endregion
+
+            #region Turn Functions
 
         // @Author: Ethan Gray
         // Purpose:
@@ -273,7 +289,8 @@ namespace DungeonDelver.Model
                     roomScores.Add(-2);
                     TextOut("");
                     TextOut($"> You flee the dungeon like the cowardly adventurer you are.\n> You forget all the experience you gained in this dungeon.\n");
-                    ImageOut(Properties.Resources.CreatureBackground);
+                    ImageOut(null);
+                    MonsterUpdate(0);
                     wait(2000);
                     GameEnd("end");
                     break;
@@ -291,7 +308,9 @@ namespace DungeonDelver.Model
             TextOut(outputText + "\n");
         }
 
+        #endregion
 
+            #region Miscc Functions
 
         // This was taken from Stack Overflow
         // Credit: Oringinally written by Said on Oct. 20, 2018. Edited by AustinWBryan on Jun. 29, 2020
@@ -323,5 +342,8 @@ namespace DungeonDelver.Model
                 Application.DoEvents();
             }
         }
+        #endregion
+
+        #endregion
     }
 }
